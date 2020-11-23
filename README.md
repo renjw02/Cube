@@ -83,3 +83,6 @@ void SearchCross()
 
 这一部分通过迭代加深搜索实现Cross，目前测试出的最长用时约3.2 Second。其生成种子见TestData.txt
 
+另外，完成了一个测试函数用于生成Cross的数据并检验时间，目前测试了三组数据。见CrossResult*.txt
+最长的时间为3.421
+
