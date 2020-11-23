@@ -1,0 +1,804 @@
+生成测试数据所用的随机数种子为：1606098031
+生成测试案例的打乱公式为
+u R r L l d u B u U d u f d D b d L f l L f L U l L R U u b r r B l F f D F F D l u F B u R R u b D 
+生成魔方的状态为：
+TestCase 1
+成功找到底层十字公式
+U f B L 
+本次SearchCross用时为 ： 0.004
+生成测试数据所用的随机数种子为：1606098036
+生成测试案例的打乱公式为
+L U U f B R r B l U R d F d d l r B u R B f D u R U d L F l D r r f B d f D F f u D u L r d L B u r 
+生成魔方的状态为：
+TestCase 2
+成功找到底层十字公式
+l u R R l B 
+本次SearchCross用时为 ： 0.534
+生成测试数据所用的随机数种子为：1606098041
+生成测试案例的打乱公式为
+R R d r u U u U d r F b B b F R d R r R d D L F d F U d L D u r L R F l b L d r L B B u B D d B d u 
+生成魔方的状态为：
+TestCase 3
+成功找到底层十字公式
+U r F F L 
+本次SearchCross用时为 ： 0.012
+生成测试数据所用的随机数种子为：1606098046
+生成测试案例的打乱公式为
+F U R D F L U f f r L F f B r U r U U u l b D f l B R r l u d F b F d b D B B L r l l r L U u D b f 
+生成魔方的状态为：
+TestCase 4
+成功找到底层十字公式
+r u F r d b 
+本次SearchCross用时为 ： 0.115
+生成测试数据所用的随机数种子为：1606098051
+生成测试案例的打乱公式为
+l F R u L r F f b r r L u U U r d R R U B b F D R F d b U r R F U R r r f R l d d R F R D r u U u b 
+生成魔方的状态为：
+TestCase 5
+成功找到底层十字公式
+r f L d r 
+本次SearchCross用时为 ： 0.011
+生成测试数据所用的随机数种子为：1606098056
+生成测试案例的打乱公式为
+r U f b l u U L L R f R l r b u r U l D R F D d u B U D u B l F D d L b R U R U R R u B F R b U B r 
+生成魔方的状态为：
+TestCase 6
+成功找到底层十字公式
+F L D L 
+本次SearchCross用时为 ： 0.002
+生成测试数据所用的随机数种子为：1606098061
+生成测试案例的打乱公式为
+f F B F U L F L U R D F L f d D d F d f B f f L B b l F L d r F l u U r D L u l f u B l U L B l U L 
+生成魔方的状态为：
+TestCase 7
+成功找到底层十字公式
+r D D r B 
+本次SearchCross用时为 ： 0.011
+生成测试数据所用的随机数种子为：1606098066
+生成测试案例的打乱公式为
+B D u R d B u R R R B r U f L F r d l L b D u l r f d b L f B u R B F U f b D L b u l d L d D l D B 
+生成魔方的状态为：
+TestCase 8
+成功找到底层十字公式
+f L U b R 
+本次SearchCross用时为 ： 0.025
+生成测试数据所用的随机数种子为：1606098071
+生成测试案例的打乱公式为
+U F F l L F r b D b u f L L f d d l D R r B r B F b U l r U u d u D b F R r f F R D F f f U D f B F 
+生成魔方的状态为：
+TestCase 9
+成功找到底层十字公式
+u f L L D B 
+本次SearchCross用时为 ： 0.195
+生成测试数据所用的随机数种子为：1606098076
+生成测试案例的打乱公式为
+D D l r r l u u F b d l d R D f f d F b U b u b d r l u U u R d D r f D d u L u f B u F u U r f U D 
+生成魔方的状态为：
+TestCase 10
+成功找到底层十字公式
+R L F b D b 
+本次SearchCross用时为 ： 0.078
+生成测试数据所用的随机数种子为：1606098082
+生成测试案例的打乱公式为
+U f B f R U B u U d L l F U b B l D R b d f L b R U F U F B f u R F D R l D D r B U U f l r u l L b 
+生成魔方的状态为：
+TestCase 11
+成功找到底层十字公式
+F D r L F 
+本次SearchCross用时为 ： 0.021
+生成测试数据所用的随机数种子为：1606098087
+生成测试案例的打乱公式为
+D u u U r d L d L D R U B U L L d L B B l f D R u L b R l d U u F b R U F L f R u r r F u R B L R f 
+生成魔方的状态为：
+TestCase 12
+成功找到底层十字公式
+R d F l B l 
+本次SearchCross用时为 ： 0.139
+生成测试数据所用的随机数种子为：1606098092
+生成测试案例的打乱公式为
+B f d D D l D d D D f D l f F B r D d U D B F R D U B D B F d u d d U F b B L d L f L U r d D F F d 
+生成魔方的状态为：
+TestCase 13
+成功找到底层十字公式
+r U B L f 
+本次SearchCross用时为 ： 0.018
+生成测试数据所用的随机数种子为：1606098097
+生成测试案例的打乱公式为
+u d R u d u l B R D l B u f f r d L f r L b U r r F F f U D u U B B l D l F b U U F d R b d D F L r 
+生成魔方的状态为：
+TestCase 14
+成功找到底层十字公式
+R L F B B 
+本次SearchCross用时为 ： 0.014
+生成测试数据所用的随机数种子为：1606098102
+生成测试案例的打乱公式为
+d f r R R L d U B f U U B L U b r b d f l b f U F l b b u u L D r D u L F D u U d L U b l U r R F F 
+生成魔方的状态为：
+TestCase 15
+成功找到底层十字公式
+U d R b l 
+本次SearchCross用时为 ： 0.024
+生成测试数据所用的随机数种子为：1606098107
+生成测试案例的打乱公式为
+b d D F r B l r F l D d L L u U d r F F d F u u d u D B L R f D L r D D b L U l L b l l D r r L L D 
+生成魔方的状态为：
+TestCase 16
+成功找到底层十字公式
+f D L f B B 
+本次SearchCross用时为 ： 0.333
+生成测试数据所用的随机数种子为：1606098112
+生成测试案例的打乱公式为
+F l b r D F d f U L b b U R R R r u U d L f r F B f f F l B B D b l R L D B f F U b l F F l l d R R 
+生成魔方的状态为：
+TestCase 17
+成功找到底层十字公式
+b D F F b 
+本次SearchCross用时为 ： 0.061
+生成测试数据所用的随机数种子为：1606098117
+生成测试案例的打乱公式为
+L d R l B f B f d L u u l b L u d r u b B f u f f b b u U d U f u F D l F R L u d U F U U L L u F U 
+生成魔方的状态为：
+TestCase 18
+成功找到底层十字公式
+R F d F b r 
+本次SearchCross用时为 ： 0.101
+生成测试数据所用的随机数种子为：1606098122
+生成测试案例的打乱公式为
+R l f U b b L L f L L d d u l f r u r B b B r D d f D r U F b l D R r b b U d B R U u r R d F u L L 
+生成魔方的状态为：
+TestCase 19
+成功找到底层十字公式
+r U r F l 
+本次SearchCross用时为 ： 0.017
+生成测试数据所用的随机数种子为：1606098127
+生成测试案例的打乱公式为
+f b l B F f B L b d R R U u D F d f b r l b b d B d r d d U F l l d u r D F B l D f B b B u F b R b 
+生成魔方的状态为：
+TestCase 20
+成功找到底层十字公式
+R R F F l B 
+本次SearchCross用时为 ： 0.058
+生成测试数据所用的随机数种子为：1606098132
+生成测试案例的打乱公式为
+l l U d f D L R l d f F R D d D r d L r B b l L r r R D L b R L R u B b F D r f b l l l u U R b L f 
+生成魔方的状态为：
+TestCase 21
+成功找到底层十字公式
+U l B B R F 
+本次SearchCross用时为 ： 0.173
+生成测试数据所用的随机数种子为：1606098137
+生成测试案例的打乱公式为
+r b u R B R b b u d l L D D F l b l B F R F b r F d D R r L f L u B F r b L R R F L F L r B d D R d 
+生成魔方的状态为：
+TestCase 22
+成功找到底层十字公式
+F r d r 
+本次SearchCross用时为 ： 0.002
+生成测试数据所用的随机数种子为：1606098142
+生成测试案例的打乱公式为
+D l L L b U l u r D r R r l R d f R d d r f B U b r r b U B U L D D D u D B u b B b u D b l d U F r 
+生成魔方的状态为：
+TestCase 23
+成功找到底层十字公式
+R R l b l f 
+本次SearchCross用时为 ： 0.054
+生成测试数据所用的随机数种子为：1606098148
+生成测试案例的打乱公式为
+r L l L B B F u b U U R B b f R r d R u D B u B r r L l u F L F r l b r L D r l B F U L f L F B B D 
+生成魔方的状态为：
+TestCase 24
+成功找到底层十字公式
+F D R L F B 
+本次SearchCross用时为 ： 0.255
+生成测试数据所用的随机数种子为：1606098153
+生成测试案例的打乱公式为
+D B U f u F U d f U d f L b D B d l r d L b r b L u u u L r F L F R r b u L F L u u r D b u F B U L 
+生成魔方的状态为：
+TestCase 25
+成功找到底层十字公式
+u f D f b l 
+本次SearchCross用时为 ： 0.202
+生成测试数据所用的随机数种子为：1606098158
+生成测试案例的打乱公式为
+B R d r F f F B u r b l u u u R r b b D f F b R B l U U l u l L d L L r B B u u L d L F l u R D D U 
+生成魔方的状态为：
+TestCase 26
+成功找到底层十字公式
+r B d B l 
+本次SearchCross用时为 ： 0.011
+生成测试数据所用的随机数种子为：1606098163
+生成测试案例的打乱公式为
+U B R D l b U B l r u r l U F b d l L l d f r r r u l L U R D L B u U u l R D U U B d u d U b r B F 
+生成魔方的状态为：
+TestCase 27
+成功找到底层十字公式
+R R u L L B 
+本次SearchCross用时为 ： 0.052
+生成测试数据所用的随机数种子为：1606098168
+生成测试案例的打乱公式为
+d R R U U f f U d r L f d D r r r b D l l f b U F f u D u l b d f b f f u U B B d l U r F l d r U d 
+生成魔方的状态为：
+TestCase 28
+成功找到底层十字公式
+r F d r B 
+本次SearchCross用时为 ： 0.009
+生成测试数据所用的随机数种子为：1606098173
+生成测试案例的打乱公式为
+b U f b u D u r f R R B U B B F d r L R D B l u b b B r d d d d L D b D B F r f r r r R U l d l D r 
+生成魔方的状态为：
+TestCase 29
+成功找到底层十字公式
+r D D r 
+本次SearchCross用时为 ： 0.001
+生成测试数据所用的随机数种子为：1606098178
+生成测试案例的打乱公式为
+u R B u d R f f B R f U R l B U R F f b L b b F U f l b L F R b R U f F l D R F D R L D R F U l U u 
+生成魔方的状态为：
+TestCase 30
+成功找到底层十字公式
+r F F d b R 
+本次SearchCross用时为 ： 0.104
+生成测试数据所用的随机数种子为：1606098183
+生成测试案例的打乱公式为
+L U b R L U u f L R l D d r d f D D u u l u l f f d F D r r l B u l R D F L u b b F d f B u U f f l 
+生成魔方的状态为：
+TestCase 31
+成功找到底层十字公式
+R f u f L b 
+本次SearchCross用时为 ： 0.072
+生成测试数据所用的随机数种子为：1606098188
+生成测试案例的打乱公式为
+R F F l r d D L U b U B r R L d R F F D b F L D L r B F U b r B D f U L B U D D r u U u L b B F l R 
+生成魔方的状态为：
+TestCase 32
+成功找到底层十字公式
+r U l B D r F 
+本次SearchCross用时为 ： 1.257
+生成测试数据所用的随机数种子为：1606098194
+生成测试案例的打乱公式为
+L B f L r F L l R d U b B U r L L u l U F B r f U r D U F l b d R d u D r f R L f b f L B U b L F F 
+生成魔方的状态为：
+TestCase 33
+成功找到底层十字公式
+R F R L B B 
+本次SearchCross用时为 ： 0.06
+生成测试数据所用的随机数种子为：1606098200
+生成测试案例的打乱公式为
+u l B L R L u r l u u b d F D L F b r B l u D r d U r R f L f u U D d u b R B b l F F B R r L F D L 
+生成魔方的状态为：
+TestCase 34
+成功找到底层十字公式
+R L u f b R 
+本次SearchCross用时为 ： 0.076
+生成测试数据所用的随机数种子为：1606098205
+生成测试案例的打乱公式为
+d b b f r U r r d U d u D L u b B r b U B F F U B L L d B f r u f r l r D u r D U u u L B L L R U U 
+生成魔方的状态为：
+TestCase 35
+成功找到底层十字公式
+B d l d l 
+本次SearchCross用时为 ： 0.043
+生成测试数据所用的随机数种子为：1606098210
+生成测试案例的打乱公式为
+R r F r D d F F r U R d R L R l F u R r L f U u r U U f b U D u l l F u f f F r d d B D L L F R D f 
+生成魔方的状态为：
+TestCase 36
+成功找到底层十字公式
+D b l d l f 
+本次SearchCross用时为 ： 0.363
+生成测试数据所用的随机数种子为：1606098215
+生成测试案例的打乱公式为
+F b L B d l U F b U F R b b R R B f B F l l R F F F r R F R b D F f B f R d u R r D l f f u b d B b 
+生成魔方的状态为：
+TestCase 37
+成功找到底层十字公式
+R f d R L b 
+本次SearchCross用时为 ： 0.067
+生成测试数据所用的随机数种子为：1606098220
+生成测试案例的打乱公式为
+L r r u R u F d f r l F f b l U F u d L b B U f d B L B f l L D d R f d D l D d D l f b u U b d U r 
+生成魔方的状态为：
+TestCase 38
+成功找到底层十字公式
+R R F B D F B 
+本次SearchCross用时为 ： 0.6
+生成测试数据所用的随机数种子为：1606098226
+生成测试案例的打乱公式为
+F b U D b b d L u l l F U r U u R U F F F F u f r B u L d d r U l u f f l R F l D U d f f U L b L f 
+生成魔方的状态为：
+TestCase 39
+成功找到底层十字公式
+U R L b d L 
+本次SearchCross用时为 ： 0.136
+生成测试数据所用的随机数种子为：1606098231
+生成测试案例的打乱公式为
+L r d b R r l b r L U L l f u r D F r d f F f D F F B u b f B U R B R u F U L f b f U u u r L b R b 
+生成魔方的状态为：
+TestCase 40
+成功找到底层十字公式
+r d b R l 
+本次SearchCross用时为 ： 0.011
+生成测试数据所用的随机数种子为：1606098236
+生成测试案例的打乱公式为
+r b L L f D d u d L D r d F R F F u b D u l u D B D f r R U u U u D U f B L d F f f U r r L F D F U 
+生成魔方的状态为：
+TestCase 41
+成功找到底层十字公式
+r u F B L F 
+本次SearchCross用时为 ： 0.101
+生成测试数据所用的随机数种子为：1606098241
+生成测试案例的打乱公式为
+f r r F B L B u f L b f r L l D B f l B F B r d r R u d f b b U b r L d l B B b B L l L b L u D L L 
+生成魔方的状态为：
+TestCase 42
+成功找到底层十字公式
+U R R l B l 
+本次SearchCross用时为 ： 0.132
+生成测试数据所用的随机数种子为：1606098246
+生成测试案例的打乱公式为
+l F D l B U L D b d u l R d l F F d B l D B F L F D B D D l F f U f u L F R r D u d L D l u b U R B 
+生成魔方的状态为：
+TestCase 43
+成功找到底层十字公式
+R R b l 
+本次SearchCross用时为 ： 0
+生成测试数据所用的随机数种子为：1606098251
+生成测试案例的打乱公式为
+U U d f u d B D l b L r D b D d B l L R d u U l d L f R b D r f f R f B b U R f l b u f D U b U L F 
+生成魔方的状态为：
+TestCase 44
+成功找到底层十字公式
+D l f b R 
+本次SearchCross用时为 ： 0.031
+生成测试数据所用的随机数种子为：1606098256
+生成测试案例的打乱公式为
+D F R U F l L l u b R D R b d l F b f R f F R B U U R b b u D f L L R L f F u R U U U u F B D B R d 
+生成魔方的状态为：
+TestCase 45
+成功找到底层十字公式
+u f b r f 
+本次SearchCross用时为 ： 0.017
+生成测试数据所用的随机数种子为：1606098261
+生成测试案例的打乱公式为
+B U F D l U b l R B f B b U F L B l d u d F U b f L B f F f U F b u D B F D D L d U l U U l D f F l 
+生成魔方的状态为：
+TestCase 46
+成功找到底层十字公式
+F r L B L f 
+本次SearchCross用时为 ： 0.224
+生成测试数据所用的随机数种子为：1606098266
+生成测试案例的打乱公式为
+u F l u B F l r D B l U f U r B F b f D L l R R L B f u f U d F U b L R b L l d l f L R L L U f d u 
+生成魔方的状态为：
+TestCase 47
+成功找到底层十字公式
+b l b 
+本次SearchCross用时为 ： 0.001
+生成测试数据所用的随机数种子为：1606098271
+生成测试案例的打乱公式为
+d D B R u B d R F B U D R D r r B r U D B B B r b u R B B b F L D D u U D B L U U f u B D F l r b f 
+生成魔方的状态为：
+TestCase 48
+成功找到底层十字公式
+F L B D r B 
+本次SearchCross用时为 ： 0.243
+生成测试数据所用的随机数种子为：1606098277
+生成测试案例的打乱公式为
+u F u b U D U f U f U d r L D r D l D D u u u l F F d L R B l F R l u L L D D F D l D R R u b l D U 
+生成魔方的状态为：
+TestCase 49
+成功找到底层十字公式
+u r b r F D F 
+本次SearchCross用时为 ： 2.091
+生成测试数据所用的随机数种子为：1606098284
+生成测试案例的打乱公式为
+r b R d L r r D b f d u l R L F F r l B b B b u l R b B B f L D f u U r B U b l l D l L B D U r B F 
+生成魔方的状态为：
+TestCase 50
+成功找到底层十字公式
+U R R B l d l 
+本次SearchCross用时为 ： 1.508
+生成测试数据所用的随机数种子为：1606098290
+生成测试案例的打乱公式为
+l l f b L B F B l R d u D U r F R r U d F F F b u F D L R u U U d f U B r f l L r B R l r f b L f L 
+生成魔方的状态为：
+TestCase 51
+成功找到底层十字公式
+L f l B B 
+本次SearchCross用时为 ： 0.037
+生成测试数据所用的随机数种子为：1606098295
+生成测试案例的打乱公式为
+r b D u r u D B d R R d f r l u D u b D D F U R D D f U r r B U U r l R d d r d D r d L B f B F l U 
+生成魔方的状态为：
+TestCase 52
+成功找到底层十字公式
+r U L L 
+本次SearchCross用时为 ： 0.001
+生成测试数据所用的随机数种子为：1606098300
+生成测试案例的打乱公式为
+D l b R r f F r R R F R b f D f R r r l d l R r l R R r D B u r D L u U U l R U R r D D L R D F f f 
+生成魔方的状态为：
+TestCase 53
+成功找到底层十字公式
+U L b R 
+本次SearchCross用时为 ： 0.001
+生成测试数据所用的随机数种子为：1606098305
+生成测试案例的打乱公式为
+B R F L D b d r B b l F f f d L D u b r f B U U R D D b d d R f l F l R r b u r r F r F D b U R L b 
+生成魔方的状态为：
+TestCase 54
+成功找到底层十字公式
+D B R L 
+本次SearchCross用时为 ： 0.003
+生成测试数据所用的随机数种子为：1606098310
+生成测试案例的打乱公式为
+U U l r d F f f L b r L F L F D R f L R D U r d d L r D b f f f R b R U L r D L D L R u F d U L R r 
+生成魔方的状态为：
+TestCase 55
+成功找到底层十字公式
+R d b R 
+本次SearchCross用时为 ： 0.001
+生成测试数据所用的随机数种子为：1606098315
+生成测试案例的打乱公式为
+d R B l R D d L U u D R B L f l D d B u L u b L l U R F R U r f u d D F U d f u R d d r U D l d F d 
+生成魔方的状态为：
+TestCase 56
+成功找到底层十字公式
+U F r d r 
+本次SearchCross用时为 ： 0.014
+生成测试数据所用的随机数种子为：1606098320
+生成测试案例的打乱公式为
+b U U D r R f L R U B f l R r b R l d u l F r l R L d B f b D F D U r D r l L U f b D L d r l u L B 
+生成魔方的状态为：
+TestCase 57
+成功找到底层十字公式
+f R U L f 
+本次SearchCross用时为 ： 0.023
+生成测试数据所用的随机数种子为：1606098325
+生成测试案例的打乱公式为
+u R d b D r L R D U u l u b B B f L f D d L b B u B r l D l u F l D u L L R b B B B r D f r f u R F 
+生成魔方的状态为：
+TestCase 58
+成功找到底层十字公式
+F U R R L b 
+本次SearchCross用时为 ： 0.221
+生成测试数据所用的随机数种子为：1606098330
+生成测试案例的打乱公式为
+L U R d b d D b F U d r l u b R b B u l L l l b B u L u b B L L r r l D u U B l F U R f u L F b F D 
+生成魔方的状态为：
+TestCase 59
+成功找到底层十字公式
+R D l b l f 
+本次SearchCross用时为 ： 0.071
+生成测试数据所用的随机数种子为：1606098336
+生成测试案例的打乱公式为
+u R r d B u r F U l L r d f F r d l b f r u U D R F u r R F f F d F B F f f L d L D b B l b U D B B 
+生成魔方的状态为：
+TestCase 60
+成功找到底层十字公式
+R R u d R b 
+本次SearchCross用时为 ： 0.051
+生成测试数据所用的随机数种子为：1606098341
+生成测试案例的打乱公式为
+L U D F b f b u L l R f f F r u r d L f u u R d u B U R r U B F B R F f R d b D r l B F d D r U U f 
+生成魔方的状态为：
+TestCase 61
+成功找到底层十字公式
+r L f b 
+本次SearchCross用时为 ： 0.001
+生成测试数据所用的随机数种子为：1606098346
+生成测试案例的打乱公式为
+R R d R F B r d D l f B b L U U b l D L F L B L B R l D D b u F r d b d d r U r U l f u r D l U B d 
+生成魔方的状态为：
+TestCase 62
+成功找到底层十字公式
+r l b d l 
+本次SearchCross用时为 ： 0.011
+生成测试数据所用的随机数种子为：1606098351
+生成测试案例的打乱公式为
+F U R f f F b D R L l U B L B F f b L b U l R l R D F f d R b u F u r f r u r L L R F r b r l B U l 
+生成魔方的状态为：
+TestCase 63
+成功找到底层十字公式
+r f u L f b 
+本次SearchCross用时为 ： 0.106
+生成测试数据所用的随机数种子为：1606098356
+生成测试案例的打乱公式为
+l F f r B D U B B L U D F b d D b r f b F B b B u R B b R B F u d B d d R f F L r R b R l R F B D u 
+生成魔方的状态为：
+TestCase 64
+成功找到底层十字公式
+d F R L 
+本次SearchCross用时为 ： 0.002
+生成测试数据所用的随机数种子为：1606098361
+生成测试案例的打乱公式为
+r U D B b b R B u L D B B b L f f F u U f U l b D U l l R d r d u D U l d d L u d u B B D L R f B f 
+生成魔方的状态为：
+TestCase 65
+成功找到底层十字公式
+U U R R 
+本次SearchCross用时为 ： 0.002
+生成测试数据所用的随机数种子为：1606098366
+生成测试案例的打乱公式为
+f F B U u r B r r d b u l u f d b U R r d u b F r L F F f F D d D r L b U l d B R U f L F d R r U R 
+生成魔方的状态为：
+TestCase 66
+成功找到底层十字公式
+u F F R L b 
+本次SearchCross用时为 ： 0.218
+生成测试数据所用的随机数种子为：1606098371
+生成测试案例的打乱公式为
+B D u b L d R f d d u d u D U B f F U f F F l f F U b U D U U D l l b r R b B l f D r d U D d r D U 
+生成魔方的状态为：
+TestCase 67
+成功找到底层十字公式
+U f r F l B 
+本次SearchCross用时为 ： 0.145
+生成测试数据所用的随机数种子为：1606098376
+生成测试案例的打乱公式为
+U F L L l R b f f d d b B D U L b D R L D L d D d d f l b b d D R R f b d r r F b l R f R U d l B L 
+生成魔方的状态为：
+TestCase 68
+成功找到底层十字公式
+R F B R b 
+本次SearchCross用时为 ： 0.006
+生成测试数据所用的随机数种子为：1606098381
+生成测试案例的打乱公式为
+D D l R U U r L b D R u L l b b f L l L d l l d B l F d R L F B u L b r U u F u F l d F B r u l D B 
+生成魔方的状态为：
+TestCase 69
+成功找到底层十字公式
+r l b D b 
+本次SearchCross用时为 ： 0.012
+生成测试数据所用的随机数种子为：1606098386
+生成测试案例的打乱公式为
+b F U l u L b L l D F L U l R l b B b b l B d L r u b U f D L l D u U u r f u b f R D B u L u F B f 
+生成魔方的状态为：
+TestCase 70
+成功找到底层十字公式
+U D f l B R 
+本次SearchCross用时为 ： 0.153
+生成测试数据所用的随机数种子为：1606098391
+生成测试案例的打乱公式为
+u D d f L l r b u D l R r r l R f R L B D U D l d l D R f u f l B b L f d d D D b R r L r L B F U d 
+生成魔方的状态为：
+TestCase 71
+成功找到底层十字公式
+R D L L f b 
+本次SearchCross用时为 ： 0.071
+生成测试数据所用的随机数种子为：1606098396
+生成测试案例的打乱公式为
+d L R B l u R b r f r F d R D U b B D U L u F B B b R D B F B l r D u d U l l f F u R d b u B R D l 
+生成魔方的状态为：
+TestCase 72
+成功找到底层十字公式
+r F F D L 
+本次SearchCross用时为 ： 0.009
+生成测试数据所用的随机数种子为：1606098401
+生成测试案例的打乱公式为
+R d R D U f U u d f D L r F d r l r F f l F D b r f b f b U u r L U f f r b L R l d d f l U D L B u 
+生成魔方的状态为：
+TestCase 73
+成功找到底层十字公式
+R R B d l 
+本次SearchCross用时为 ： 0.005
+生成测试数据所用的随机数种子为：1606098406
+生成测试案例的打乱公式为
+F l f u D B R U f f B r R F u u u u f F b L F R F b D b F b b R b l b d L f b d u D D F d U r L r D 
+生成魔方的状态为：
+TestCase 74
+成功找到底层十字公式
+R f u L f B 
+本次SearchCross用时为 ： 0.067
+生成测试数据所用的随机数种子为：1606098411
+生成测试案例的打乱公式为
+L b B L d F U D b L u f D d F f l f u L L l U r b r R B f L F R U f D l U d U D L B r U F l r u l R 
+生成魔方的状态为：
+TestCase 75
+成功找到底层十字公式
+R F R u B l 
+本次SearchCross用时为 ： 0.061
+生成测试数据所用的随机数种子为：1606098416
+生成测试案例的打乱公式为
+r l b F R D r B l L d l r d r F u d R d B U F U U d d F l D r R f R R b r l r U r l R r U L l u r U 
+生成魔方的状态为：
+TestCase 76
+成功找到底层十字公式
+R R F F b l B 
+本次SearchCross用时为 ： 0.59
+生成测试数据所用的随机数种子为：1606098422
+生成测试案例的打乱公式为
+L d F L R U d B d b L l B l D L b U l d u u f U L d u U b F D L R u r L b r R F f r b U F L B d L D 
+生成魔方的状态为：
+TestCase 77
+成功找到底层十字公式
+f u L f B B 
+本次SearchCross用时为 ： 0.271
+生成测试数据所用的随机数种子为：1606098427
+生成测试案例的打乱公式为
+R l f r R L D r R u R U L R u d f F D D F L d u b r l r R r u L u B d D D u u b d f B R U u D d R r 
+生成魔方的状态为：
+TestCase 78
+成功找到底层十字公式
+R R F r B l 
+本次SearchCross用时为 ： 0.05
+生成测试数据所用的随机数种子为：1606098432
+生成测试案例的打乱公式为
+f b B l f l L r B u f D u R F l b D F B D l f F r u L d f b L L D U B L f f D B R L f b R U f u u u 
+生成魔方的状态为：
+TestCase 79
+成功找到底层十字公式
+R U l b R F 
+本次SearchCross用时为 ： 0.056
+生成测试数据所用的随机数种子为：1606098437
+生成测试案例的打乱公式为
+l l u D D u D f L U l B r F R L f f U l u r F f F l u D D L f b l B F B R d f f f L F l B U r U d l 
+生成魔方的状态为：
+TestCase 80
+成功找到底层十字公式
+f D D f l 
+本次SearchCross用时为 ： 0.027
+生成测试数据所用的随机数种子为：1606098442
+生成测试案例的打乱公式为
+r b d B b f L F U U U U d u r B b d u R f U U D d u l R B f l b R f B R D r L R b b b L L l r B b b 
+生成魔方的状态为：
+TestCase 81
+成功找到底层十字公式
+U L U L F r 
+本次SearchCross用时为 ： 0.159
+生成测试数据所用的随机数种子为：1606098448
+生成测试案例的打乱公式为
+l B L U b r b l R B U U f f D b d D d L B L d r r F f B R F d L d L b l l F D u u u U l B L B D D u 
+生成魔方的状态为：
+TestCase 82
+成功找到底层十字公式
+R F r D l 
+本次SearchCross用时为 ： 0.006
+生成测试数据所用的随机数种子为：1606098453
+生成测试案例的打乱公式为
+r L r d b d r L B l d d b l u r r F f R b l l U F B R L r r R d B u f d F D l B L u l d L L B U B B 
+生成魔方的状态为：
+TestCase 83
+成功找到底层十字公式
+U L L b 
+本次SearchCross用时为 ： 0.001
+生成测试数据所用的随机数种子为：1606098458
+生成测试案例的打乱公式为
+D B U u F L R R F l b b l l R F d D d b r l d u b b B u D B L d r b L l B L L l U D L D f u f U U R 
+生成魔方的状态为：
+TestCase 84
+成功找到底层十字公式
+R R L L b 
+本次SearchCross用时为 ： 0.005
+生成测试数据所用的随机数种子为：1606098463
+生成测试案例的打乱公式为
+B R d R f U U R U l F u F R r U r L F U b U f F U f f r d L r d F D U b f B b F u B u F u U f l f D 
+生成魔方的状态为：
+TestCase 85
+成功找到底层十字公式
+d r F B L 
+本次SearchCross用时为 ： 0.032
+生成测试数据所用的随机数种子为：1606098468
+生成测试案例的打乱公式为
+U B R F B L R u L L L d U R l f D b U D R u u f F b R L b f B b d U L r F R U u L l u u r B r l r L 
+生成魔方的状态为：
+TestCase 86
+成功找到底层十字公式
+R f D L b 
+本次SearchCross用时为 ： 0.006
+生成测试数据所用的随机数种子为：1606098473
+生成测试案例的打乱公式为
+d R f r u l U u D L r R l u B d R r b f U d f D d r D D R U u B B l b u b D r B U r B r d l L f f u 
+生成魔方的状态为：
+TestCase 87
+成功找到底层十字公式
+L b R D L 
+本次SearchCross用时为 ： 0.038
+生成测试数据所用的随机数种子为：1606098478
+生成测试案例的打乱公式为
+b U D B F u r D R L f F u d d D B b r l u L u b B d f r f F b B r f f r f L F f d R l d f L L r l f 
+生成魔方的状态为：
+TestCase 88
+成功找到底层十字公式
+L D B d L 
+本次SearchCross用时为 ： 0.036
+生成测试数据所用的随机数种子为：1606098483
+生成测试案例的打乱公式为
+u R B U l F u B B d l L r d F L F r b L r l U R f r R b D r F B f L R u F B d f R u F D U F F r r d 
+生成魔方的状态为：
+TestCase 89
+成功找到底层十字公式
+D r L b R 
+本次SearchCross用时为 ： 0.028
+生成测试数据所用的随机数种子为：1606098488
+生成测试案例的打乱公式为
+L U u b l B r B u d U R L B f D B u L b U r F r L u d l b B l r R F D f b R b R D u u F R u F L f r 
+生成魔方的状态为：
+TestCase 90
+成功找到底层十字公式
+R F L U b R 
+本次SearchCross用时为 ： 0.063
+生成测试数据所用的随机数种子为：1606098493
+生成测试案例的打乱公式为
+R F F d U F u r r d D f U B r l F f B u F U U U b l r F R L D r u b L d D u B d b D B u B B b L l F 
+生成魔方的状态为：
+TestCase 91
+成功找到底层十字公式
+l B 
+本次SearchCross用时为 ： 0
+生成测试数据所用的随机数种子为：1606098498
+生成测试案例的打乱公式为
+F U l R d f U r d D b l R U B b B d d U f u R u U u R U F f B r D d u l F f r D F B f r L B b F r B 
+生成魔方的状态为：
+TestCase 92
+成功找到底层十字公式
+D r l B 
+本次SearchCross用时为 ： 0.003
+生成测试数据所用的随机数种子为：1606098503
+生成测试案例的打乱公式为
+l F U L L b R f f D b r d r b B F l f f u d B F l f d l f U d r l U l d b d F r D l F R D f d F l R 
+生成魔方的状态为：
+TestCase 93
+成功找到底层十字公式
+B l f r 
+本次SearchCross用时为 ： 0.004
+生成测试数据所用的随机数种子为：1606098508
+生成测试案例的打乱公式为
+r U d f r r U F b D F f f f L R B d u f F L R f b B U d B R R F R B R l D l u R b r b B F F D R r D 
+生成魔方的状态为：
+TestCase 94
+成功找到底层十字公式
+R U L L B B 
+本次SearchCross用时为 ： 0.09
+生成测试数据所用的随机数种子为：1606098513
+生成测试案例的打乱公式为
+f F L B U D R L l f L B R F l u F B F L D l B D U F L U u l L F F f D b f b D L F R B L l F U d f L 
+生成魔方的状态为：
+TestCase 95
+成功找到底层十字公式
+r u F r L L 
+本次SearchCross用时为 ： 0.099
+生成测试数据所用的随机数种子为：1606098518
+生成测试案例的打乱公式为
+B D R D d R u d u f r U D L D r B R U b d r l d f D d R F D r F d r R r b r l u B F f d d b B d l u 
+生成魔方的状态为：
+TestCase 96
+成功找到底层十字公式
+f D b l 
+本次SearchCross用时为 ： 0.003
+生成测试数据所用的随机数种子为：1606098523
+生成测试案例的打乱公式为
+U F f u L U r b r l f D F L U F F U b b f U b L R R U D L L B u B L u u D u L U u d F f f B l u r f 
+生成魔方的状态为：
+TestCase 97
+成功找到底层十字公式
+u r F L b 
+本次SearchCross用时为 ： 0.016
+生成测试数据所用的随机数种子为：1606098528
+生成测试案例的打乱公式为
+D D D d R d u u d L B B b b u D U F r U D u l l u D l f l f u u f F l r f f b l L d b R u D f u f d 
+生成魔方的状态为：
+TestCase 98
+成功找到底层十字公式
+R d R L b 
+本次SearchCross用时为 ： 0.007
+生成测试数据所用的随机数种子为：1606098533
+生成测试案例的打乱公式为
+b L b F f l r U f L U U f b R f L U b r L L d B D R u b U U b d L b F u R b U F U B B B r f f b R r 
+生成魔方的状态为：
+TestCase 99
+成功找到底层十字公式
+R 
+本次SearchCross用时为 ： 0
+生成测试数据所用的随机数种子为：1606098538
+生成测试案例的打乱公式为
+u D F R D u F D b L d d u u r d U F L f l L f b l U U B u R F d b d B f D r f u d B D l B R r B F F 
+生成魔方的状态为：
+TestCase 100
+成功找到底层十字公式
+D B L f r 
+本次SearchCross用时为 ： 0.03
+
+Average : 0.12581
+Maxtime : 2.091
+
