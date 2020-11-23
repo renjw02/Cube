@@ -1,10 +1,17 @@
 /*
+    仓库位置：https://github.com/adfwer233/Cube
+
     Update 11-16
         实现了12种旋转函数
     
     Update 11-17
         对12种旋转函数中的输出添加了预编译指令
         实现了用于生成测试案例并输出打乱公式的函数
+
+    Update 11-23
+        实现了底层十字函数并编写了测试函数
+
+
 */
 
 #include<iostream>   
@@ -479,6 +486,10 @@ bool IsCross()
 /*
     尝试使用迭代加深搜索寻找底层十字公式
 */
+#ifdef CrossDebug
+double Sumtime = 0;
+double Maxtime = 0;
+#endif
 
 int lim = 0;
 char stack[10] = {0};
@@ -535,7 +546,32 @@ void SearchCross()
     finish = clock();
 #ifdef CrossDebug
     cout << "本次SearchCross用时为 ： "  <<  (finish - start) / CLOCKS_PER_SEC << endl;
+    double time = 0;
+    time = (finish - start) / CLOCKS_PER_SEC;
+    Sumtime += time;
+    Maxtime = max(Maxtime,time);
 #endif
+}
+
+//用于测试底层十字的函数
+void CrossTester()
+{
+    int n = 100;
+    lim = 0;
+    for(int i=0;i<=9;i++) stack[i] = 0;
+
+    freopen("CrossResult.txt","w",stdout);
+    for(int i=1;i<=n;i++)
+    {
+        ReSet();
+        TestCaseGenerator(50,time(0) + i*5);
+        cout << "TestCase " << i << endl;
+        SearchCross();
+    }
+    cout << endl;
+    cout << "Average : " << Sumtime / n << endl;
+    cout << "Maxtime : " << Maxtime     << endl << endl; 
+    fclose(stdout);
 }
 
 int main()
@@ -546,7 +582,9 @@ int main()
     // 从标准输入流中读入魔方状态
 
     // 随机生成测试数据
-    TestCaseGenerator(60);
+    //TestCaseGenerator(60);
 
-    SearchCross();
+    //SearchCross();
+
+    CrossTester();
 }
