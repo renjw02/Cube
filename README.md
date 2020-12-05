@@ -54,6 +54,7 @@ void Exchange(char* a[4],char* b[4],char* c[4],char* d[4])
 void StringToRotate(const char ops) //用来进行ops对应的旋转
 void StringToAntirotate(const char ops) //用来进行ops方向相反的旋转
 char GetRevOpt(char ops) //获取与ops方向相反的操作
+void RunFormula(char *Formula,int len) //执行一段公式，Formula为公式对应数组，len为公式长度
 ```
 ### 生成测试数据
 
@@ -85,4 +86,12 @@ void SearchCross()
 
 另外，完成了一个测试函数用于生成Cross的数据并检验时间，目前测试了三组数据。见CrossResult*.txt
 最长的时间为3.421
+
+Update 目前所测试的数据最长用时在CrossResult4.txt中，用时6.919，用8步完成底层十字
+
+#### 底层十字还需要的工作
+
+* 编写一个朴素的底层十字
+* 尝试使用双向搜索寻找底层十字
+ 
 

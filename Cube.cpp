@@ -400,6 +400,7 @@ void StringToAntirotate(const char ops)
     }   
 }
 
+// 获取相反的操作
 char GetRevOpt(char ops)
 {
     if(ops == 'R')      return 'r';
@@ -419,6 +420,14 @@ char GetRevOpt(char ops)
         cout << "Wrong Rotate Type in function GetRevOpt" << ' ' << ops << ' ' << '.' << endl;
     } 
 }
+
+// 执行一段公式，Formula为公式对应数组，len为公式长度
+void RunFormula(char *Formula,int len)
+{
+    for(int i=0;i<len;i++)
+        StringToRotate(Formula[i]);
+}
+
 // 用于手动测试旋转函数的函数
 void TestRotate()
 {
@@ -546,6 +555,8 @@ void SearchCross()
     finish = clock();
 #ifdef CrossDebug
     cout << "本次SearchCross用时为 ： "  <<  (finish - start) / CLOCKS_PER_SEC << endl;
+    if((finish - start) / CLOCKS_PER_SEC > 1)
+        cout << "More than One Second !" << endl;
     double time = 0;
     time = (finish - start) / CLOCKS_PER_SEC;
     Sumtime += time;
@@ -553,13 +564,47 @@ void SearchCross()
 #endif
 }
 
+
+// 进行底层角块归位的函数
+/*
+    先把底层角块旋转到顶层
+*/
+void FloorCorner()
+{
+    // 还原(1,3)位置的角块
+    bool flag1 = 0;
+    for(int i=1;i<=4;i++)
+    {
+        if(cube[4][1][1] == 'Y' && cube[1][1][3] == 'G' && cube[5][3][3] == 'R')
+        {
+            RunFormula("RUr",3);
+            flag1 = 1;
+            break;
+        }
+        if(cube[1][1][3] == 'Y' && cube[5][3][3] == 'G' && cube[4][1][1] == 'R')
+        {
+            RunFormula("fuF",3);
+            flag1 = 1;
+            break;
+        }   
+        if(cube[5][3][3] == 'Y')
+        {
+
+        }
+        U();
+    } 
+    if(!flag1)
+    {
+        RunFormula()
+    }
+}
+
 //用于测试底层十字的函数
 void CrossTester()
 {
-    int n = 100;
+    int n = 200;
     lim = 0;
     for(int i=0;i<=9;i++) stack[i] = 0;
-
     freopen("CrossResult.txt","w",stdout);
     for(int i=1;i<=n;i++)
     {
@@ -573,6 +618,7 @@ void CrossTester()
     cout << "Maxtime : " << Maxtime     << endl << endl; 
     fclose(stdout);
 }
+
 
 int main()
 {
