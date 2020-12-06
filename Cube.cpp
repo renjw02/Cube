@@ -11,7 +11,8 @@
     Update 11-23
         实现了底层十字函数并编写了测试函数
 
-
+    Update 12-06
+        奇怪的多人合作
 */
 #include <iostream>
 #include <cstring>
@@ -56,9 +57,9 @@ namespace DataStructure
         cube = new char **[7];
         for (int i = 1; i <= 6; i++)
         {
-            cube[i] = new char *[55];
+            cube[i] = new char *[10];
             for (int j = 1; j <= 3; j++)
-                cube[i][j] = new char[45];
+                cube[i][j] = new char[10];
         }
     }
 } // namespace DataStructure
