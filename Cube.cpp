@@ -13,7 +13,6 @@
 
 
 */
-
 #include <iostream>
 #include <cstring>
 #include <fstream>
@@ -535,27 +534,6 @@ namespace TestTools
         //Sprint();
     }
 
-    //用于测试底层十字的函数
-    void CrossTester()
-    {
-        int n = 200;
-        lim = 0;
-        for (int i = 0; i <= 9; i++)
-            stack[i] = 0;
-        freopen("CrossResult.txt", "w", stdout);
-        for (int i = 1; i <= n; i++)
-        {
-            ReSet();
-            TestCaseGenerator(50, time(0) + i * 5);
-            cout << "TestCase " << i << endl;
-            SearchCross();
-        }
-        cout << endl;
-        cout << "Average : " << Sumtime / n << endl;
-        cout << "Maxtime : " << Maxtime << endl
-             << endl;
-        fclose(stdout);
-    }
 } // namespace TestTools
 using namespace TestTools;
 
@@ -652,8 +630,32 @@ namespace Cross
 #endif
     }
 
+    //用于测试底层十字的函数
+    void CrossTester()
+    {
+        int n = 200;
+        lim = 0;
+        for (int i = 0; i <= 9; i++)
+            stack[i] = 0;
+        freopen("CrossResult.txt", "w", stdout);
+        for (int i = 1; i <= n; i++)
+        {
+            ReSet();
+            TestCaseGenerator(50, time(0) + i * 5);
+            cout << "TestCase " << i << endl;
+            SearchCross();
+        }
+        cout << endl;
+        cout << "Average : " << Sumtime / n << endl;
+        cout << "Maxtime : " << Maxtime << endl
+             << endl;
+        fclose(stdout);
+    }
+
 } // namespace Cross
 using namespace Cross;
+
+
 
 // 进行底层角块归位的函数
 // 尚未施工完成
