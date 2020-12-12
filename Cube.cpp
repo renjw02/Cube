@@ -19,6 +19,10 @@
         又增加了
         
         为什么这么多奇怪的东西
+
+    Update 12-12
+        编写了测试底层角块的函数
+        对迭代加深搜索实现的底层十字进行了一些优化
 */
 #include <iostream>
 #include <cstring>
@@ -34,6 +38,7 @@ using namespace std;
 // 预编译指令
 // #define RotateDebug
 #define CrossDebug
+#define OutputFormula
 
 namespace DataStructure
 {
@@ -482,12 +487,146 @@ namespace Operate
     void RunFormula(char *Formula, int len)
     {
         for (int i = 0; i < len; i++)
+        {
             StringToRotate(Formula[i]);
+#ifdef OutputFormula
+            cout << Formula[i] << ' ';
+#endif
+        }
     }
 
 } // namespace Operate
 using namespace Operate;
 
+namespace Cross
+{
+    // 判断两个操作是否相关,若相关，返回1，不相关返回0
+    bool JudgeRelevance(char x, char y)
+    {
+        if ((x == 'u' || x == 'U') && (y == 'D' || y == 'd'))
+            return 0;
+        if ((x == 'R' || x == 'r') && (y == 'L' || y == 'l'))
+            return 0;
+        if ((x == 'F' || x == 'f') && (y == 'B' || y == 'b'))
+            return 0;
+
+        swap(x, y);
+
+        if ((x == 'u' || x == 'U') && (y == 'D' || y == 'd'))
+            return 0;
+        if ((x == 'R' || x == 'r') && (y == 'L' || y == 'l'))
+            return 0;
+        if ((x == 'F' || x == 'f') && (y == 'B' || y == 'b'))
+            return 0;
+
+        return 1;
+    }
+
+    // 判断是否已经完成了底层十字 已完成则返回1，未完成返回0
+    bool IsCross()
+    {
+        char std = cube[6][2][2];
+        bool res = (cube[6][1][2] == std && cube[6][2][1] == std && cube[6][2][3] == std && cube[6][3][2] == std);
+#ifdef CrossDebug
+        if (res)
+        {
+            //Sprint();
+        }
+#endif
+        return res;
+    }
+
+// 进行底层十字的函数
+/*
+    尝试使用迭代加深搜索寻找底层十字公式
+*/
+#ifdef CrossDebug
+    double Sumtime = 0;
+    double Maxtime = 0;
+#endif
+
+    int lim = 0;
+    char stack[10] = {0};
+    bool flag = 0;
+    bool IDFS(int deep)
+    {
+        //cout << deep << endl;
+        if (IsCross())
+            return 1;
+        if (deep > lim)
+            return 0;
+        bool res = 0;
+        for (int i = 0; i < 12; i++)
+        {
+            char op = opts[i];
+            // 剪枝 ：连续两次进行了相反的操作
+            if (deep >= 2 && op == GetRevOpt(stack[deep - 1]))
+                continue;
+            // 剪枝 ：连续进行了三次同一方向的旋转
+            if (deep >= 3 && op == stack[deep - 1] && op == stack[deep - 2])
+                continue;
+            // 剪枝 : 该步操作与上一步操作无关且与上两步操作相反
+            if (deep >= 3 && op == GetRevOpt(stack[deep - 2]) && !JudgeRelevance(op, stack[deep - 1]))
+                continue;
+            StringToRotate(op);
+            stack[deep] = op;
+            res = res || IDFS(deep + 1);
+            if (res == 1)
+            {
+#ifdef CrossDebug
+                if (flag == 0)
+                {
+                    cout << "成功找到底层十字公式" << endl;
+                    for (int i = 1; i <= deep; i++)
+                        cout << stack[i] << ' ';
+                    cout << endl;
+                    flag = 1;
+                }
+#endif
+                stack[deep] = 0;
+                return 1;
+            }
+            stack[deep] = 0;
+            StringToAntirotate(op);
+        }
+        return 0;
+    }
+
+    void SearchCross()
+    {
+        flag = 0;
+        double start, finish;
+        start = clock();
+        if (IsCross())
+            return;
+        for (int i = 1; i <= 8; i++)
+        {
+            lim = i;
+            if (IDFS(1))
+            {
+                break;
+            }
+        }
+        finish = clock();
+#ifdef CrossDebug
+        cout << "本次SearchCross用时为 ： " << (finish - start) / CLOCKS_PER_SEC << endl;
+        if ((finish - start) / CLOCKS_PER_SEC > 1)
+            cout << "More than One Second !" << endl;
+        double time = 0;
+        time = (finish - start) / CLOCKS_PER_SEC;
+        Sumtime += time;
+        Maxtime = max(Maxtime, time);
+#endif
+    }
+} // namespace Cross
+using namespace Cross;
+
+namespace TwoWayCross
+{
+    /*
+        计划编写一个双向搜索提高底层十字的速度
+    */
+}
 namespace TestTools
 {
 
@@ -541,106 +680,10 @@ namespace TestTools
         //Sprint();
     }
 
-} // namespace TestTools
-using namespace TestTools;
-
-namespace Cross
-{
-
-    // 判断是否已经完成了底层十字 已完成则返回1，未完成返回0
-    bool IsCross()
-    {
-        char std = cube[6][2][2];
-        bool res = (cube[6][1][2] == std && cube[6][2][1] == std && cube[6][2][3] == std && cube[6][3][2] == std);
-#ifdef CrossDebug
-        if (res)
-        {
-            //Sprint();
-        }
-#endif
-        return res;
-    }
-
-// 进行底层十字的函数
-/*
-    尝试使用迭代加深搜索寻找底层十字公式
-*/
-#ifdef CrossDebug
-    double Sumtime = 0;
-    double Maxtime = 0;
-#endif
-
-    int lim = 0;
-    char stack[10] = {0};
-    bool flag = 0;
-    bool IDFS(int deep)
-    {
-        //cout << deep << endl;
-        if (IsCross())
-            return 1;
-        if (deep > lim)
-            return 0;
-        bool res = 0;
-        for (int i = 0; i < 12; i++)
-        {
-            char op = opts[i];
-            if (deep >= 2 && op == GetRevOpt(stack[deep - 1]))
-                continue;
-            StringToRotate(op);
-            stack[deep] = op;
-            res = res || IDFS(deep + 1);
-            if (res == 1)
-            {
-#ifdef CrossDebug
-                if (flag == 0)
-                {
-                    cout << "成功找到底层十字公式" << endl;
-                    for (int i = 1; i <= deep; i++)
-                        cout << stack[i] << ' ';
-                    cout << endl;
-                    flag = 1;
-                }
-#endif
-                stack[deep] = 0;
-                return 1;
-            }
-            stack[deep] = 0;
-            StringToAntirotate(op);
-        }
-        return 0;
-    }
-
-    void SearchCross()
-    {
-        flag = 0;
-        double start, finish;
-        start = clock();
-        if (IsCross())
-            return;
-        for (int i = 1; i <= 8; i++)
-        {
-            lim = i;
-            if (IDFS(1))
-            {
-                break;
-            }
-        }
-        finish = clock();
-#ifdef CrossDebug
-        cout << "本次SearchCross用时为 ： " << (finish - start) / CLOCKS_PER_SEC << endl;
-        if ((finish - start) / CLOCKS_PER_SEC > 1)
-            cout << "More than One Second !" << endl;
-        double time = 0;
-        time = (finish - start) / CLOCKS_PER_SEC;
-        Sumtime += time;
-        Maxtime = max(Maxtime, time);
-#endif
-    }
-
     //用于测试底层十字的函数
     void CrossTester()
     {
-        int n = 200;
+        int n = 3000;
         lim = 0;
         for (int i = 0; i <= 9; i++)
             stack[i] = 0;
@@ -659,43 +702,61 @@ namespace Cross
         fclose(stdout);
     }
 
-} // namespace Cross
-using namespace Cross;
-
-
-
-// 进行底层角块归位的函数
-// 尚未施工完成
-/*
-    先把底层角块旋转到顶层
-*/
-void FloorCorner()
-{
-    // 还原(1,3)位置的角块
-    bool flag1 = 0;
-    for (int i = 1; i <= 4; i++)
+    bool JudgeFloorCorner()
     {
-        if (cube[4][1][1] == 'Y' && cube[1][1][3] == 'G' && cube[5][3][3] == 'R')
-        {
-            RunFormula("RUr", 3);
-            flag1 = 1;
-            break;
-        }
-        if (cube[1][1][3] == 'Y' && cube[5][3][3] == 'G' && cube[4][1][1] == 'R')
-        {
-            RunFormula("fuF", 3);
-            flag1 = 1;
-            break;
-        }
-        if (cube[5][3][3] == 'Y')
-        {
-        }
-        U();
+        if (!IsCross)
+            return 0;
+        bool res = 1;
+        for (int i = 1; i <= 4; i++)
+            for (int j = 1; j <= 3; j++)
+                if (cube[i][3][j] != StandardColor[i - 1])
+                    return 0;
+        return 1;
     }
-    if (!flag1)
+
+    bool FloorCornerGenerator(int num, int Seed = 0)
     {
+        ReSet();
+        int n;
+        ifstream fin("FloorCornerData.txt");
+        fin >> n;
+
+        char **F = new char *[n];
+        for (int i = 0; i < n; i++)
+            F[i] = new char[10];
+        for (int i = 0; i < n; i++)
+            cin >> F[i];
+
+        fin.close();
+
+        Seed = int(time(0));
+        srand(Seed);
+        for (int i = 1; i <= num; i++)
+        {
+            int x = rand() % n;
+            RunFormula(F[x], sizeof(F[x]));
+        }
     }
-}
+
+    void FloorCornerTester()
+    {
+        FloorCornerGenerator(50);
+        cout << "生成底层角块" << endl;
+        Sprint();
+        if (JudgeFloorCorner())
+        {
+            cout << "测试底层角块结果正确" << endl;
+        }
+        else
+        {
+            cout << "测试底层角块结果不正确" << endl;
+        }
+        cout << "操作结果为：" << endl;
+        Sprint();
+    }
+
+} // namespace TestTools
+using namespace TestTools;
 
 int main()
 {
@@ -708,6 +769,5 @@ int main()
     //TestCaseGenerator(60);
 
     //SearchCross();
-
     CrossTester();
 }
