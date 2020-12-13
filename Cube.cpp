@@ -101,6 +101,7 @@ namespace IO
 
     void SpiltPrint()
     {
+        cout << endl;
         for (int i = 1; i <= 3; i++)
         {
             for (int j = 1; j <= 6; j++)
@@ -541,10 +542,10 @@ namespace Cross
     {
         char std = cube[6][2][2];
         bool res = (cube[6][1][2] == std && cube[6][2][1] == std && cube[6][2][3] == std && cube[6][3][2] == std);
-        res = res && cube[1][3][2] == cube[1][2][2];
-        res = res && cube[2][3][2] == cube[2][2][2];
-        res = res && cube[3][3][2] == cube[3][2][2];
-        res = res && cube[4][3][2] == cube[4][2][2];
+        res = (res && cube[1][3][2] == cube[1][2][2]);
+        res = (res && cube[2][3][2] == cube[2][2][2]);
+        res = (res && cube[3][3][2] == cube[3][2][2]);
+        res = (res && cube[4][3][2] == cube[4][2][2]);
 #ifdef CrossDebug
         if (res)
         {
@@ -639,12 +640,117 @@ namespace Cross
 } // namespace Cross
 using namespace Cross;
 
-namespace TwoWayCross
+namespace BruteCross
 {
-    /*
-        计划编写一个双向搜索提高底层十字的速度
-    */
-}
+    struct state
+    {
+        int from[3];
+        int to[3];
+        char Formula[10];
+    };
+
+    state Case1[] = {
+        {{6, 1, 2}, {5, 3, 2}, "FF"},
+        {{6, 2, 1}, {5, 2, 1}, "LL"},
+        {{6, 2, 3}, {5, 2, 3}, "RR"},
+        {{6, 3, 2}, {5, 1, 2}, "BB"}};
+
+    state Case2[] = {
+        {{1, 3, 2}, {5, 3, 2}, "FUl"},
+        {{2, 3, 2}, {5, 1, 2}, "BUr"},
+        {{3, 3, 2}, {5, 2, 1}, "LUb"},
+        {{4, 3, 2}, {5, 2, 3}, "RUf"}};
+
+    state Case3[] = {
+        {{1, 2, 1}, {5, 2, 1}, "l"},
+        {{1, 2, 3}, {5, 2, 3}, "R"},
+        {{2, 2, 1}, {5, 2, 3}, "r"},
+        {{2, 2, 3}, {5, 2, 1}, "L"},
+        {{3, 2, 1}, {5, 1, 2}, "b"},
+        {{3, 2, 3}, {5, 3, 2}, "F"},
+        {{4, 2, 1}, {5, 3, 2}, "f"},
+        {{4, 2, 3}, {5, 1, 2}, "B"}};
+
+    state Case4[] = {
+        {{1, 1, 2}, {5, 3, 2}, "FuR"},
+        {{2, 1, 2}, {5, 1, 2}, "BuL"},
+        {{3, 1, 2}, {5, 2, 1}, "LuF"},
+        {{4, 1, 2}, {5, 2, 3}, "RuB"}};
+
+    void RunState(state x)
+    {
+        if (cube[x.from[0]][x.from[1]][x.from[2]] == 'Y')
+        {
+            for (int i = 1; i <= 4; i++)
+            {
+                if (cube[x.to[0]][x.to[1]][x.to[2]] != 'Y')
+                {
+                    RunFormula(x.Formula, strlen(x.Formula));
+                    break;
+                }
+                RunFormula("U", 1);
+            }
+        }
+    }
+
+    void BruteCross()
+    {
+        // 分四层将棱块旋转到顶面上
+        for (int j = 0; j < sizeof(Case1) / sizeof(state); j++)
+        {
+            for (int i = 0; i < sizeof(Case1) / sizeof(state); i++)
+                RunState(Case1[i]);
+            for (int i = 0; i < sizeof(Case2) / sizeof(state); i++)
+                RunState(Case2[i]);
+            for (int i = 0; i < sizeof(Case3) / sizeof(state); i++)
+                RunState(Case3[i]);
+            for (int i = 0; i < sizeof(Case4) / sizeof(state); i++)
+                RunState(Case4[i]);          
+        }
+
+        for (int i = 1; i <= 4; i++)
+        {
+            if (cube[1][1][2] == 'G' && cube[5][3][2] == 'Y')
+            {
+                RunFormula("FF", 2);
+                break;
+            }
+            RunFormula("U", 1);
+        }
+
+        for (int i = 1; i <= 4; i++)
+        {
+            if (cube[3][1][2] == 'O' && cube[5][2][1] == 'Y')
+            {
+                RunFormula("LL", 2);
+                break;
+            }
+            RunFormula("U", 1);
+        }
+
+        for (int i = 1; i <= 4; i++)
+        {
+            if (cube[4][1][2] == 'R' && cube[5][2][3] == 'Y')
+            {
+                RunFormula("RR", 2);
+                break;
+            }
+            RunFormula("U", 1);
+        }
+
+        for (int i = 1; i <= 4; i++)
+        {
+            if (cube[2][1][2] == 'B' && cube[5][1][2] == 'Y')
+            {
+                RunFormula("BB", 2);
+                break;
+            }
+            RunFormula("U", 1);
+        }
+
+    }
+} // namespace BruteCross
+
 namespace TestTools
 {
 
@@ -701,7 +807,8 @@ namespace TestTools
     //用于测试底层十字的函数
     void CrossTester()
     {
-        int n = 100;
+        int n = 30000;
+        int success = 0;
         lim = 0;
         for (int i = 0; i <= 9; i++)
             stack[i] = 0;
@@ -709,16 +816,28 @@ namespace TestTools
         for (int i = 1; i <= n; i++)
         {
             ReSet();
-            TestCaseGenerator(50, time(0) + i * 5);
+            cout << "---------------------------------------" << endl;
             cout << "TestCase " << i << endl;
-            SearchCross();
+            TestCaseGenerator(10, time(0) + i * 5);
+            
+            BruteCross::BruteCross();
+            
+            if(IsCross())
+            {
+                ++success;
+                cout << "Right Cross" << endl;
+            }
+            else
+                cout << "Wrong Cross" << endl;
+            
             SpiltPrint();
+            cout << "---------------------------------------" << endl;
         }
         cout << endl;
         cout << "Average : " << Sumtime / n << endl;
         cout << "Maxtime : " << Maxtime << endl
              << endl;
-        
+        cout << success << '/' << n << endl;
         fclose(stdout);
     }
 
@@ -780,14 +899,10 @@ namespace TestTools
 } // namespace TestTools
 using namespace TestTools;
 
-
-
 int main()
 {
     // 初始化动态数组cube
     init();
-
-    // 从标准输入流中读入魔方状态
 
     // 随机生成测试数据
     //TestCaseGenerator(60);
