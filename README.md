@@ -1,5 +1,6 @@
 # 魔方大作业文档
-
+## Update
+底层十字出了一些锅，正在修复
 ## 分工
 ### 1
 - 底层角块归位
@@ -53,6 +54,17 @@ char opts[] = "RrUuFfDdLlBb";
 char StandardColor[] = "GBORWY";
 ```
 ## 已经实现的功能及其说明
+
+### 输出函数
+
+```cpp
+void CrossTester()
+```
+输出样例如下
+
+GGB BWY BBO YRR RRW YYY 
+GGW BBW OOO BRO RWG YYY 
+GGG BBR GOO RRO WWO WYW 
 
 ### 旋转函数
 在实现旋转函数前先实现了3个辅助函数
