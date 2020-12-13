@@ -701,7 +701,7 @@ namespace TestTools
     //用于测试底层十字的函数
     void CrossTester()
     {
-        int n = 3;
+        int n = 100;
         lim = 0;
         for (int i = 0; i <= 9; i++)
             stack[i] = 0;
@@ -709,7 +709,7 @@ namespace TestTools
         for (int i = 1; i <= n; i++)
         {
             ReSet();
-            TestCaseGenerator(10, time(0) + i * 5);
+            TestCaseGenerator(50, time(0) + i * 5);
             cout << "TestCase " << i << endl;
             SearchCross();
             SpiltPrint();
@@ -763,6 +763,8 @@ namespace TestTools
         FloorCornerGenerator(50);
         cout << "生成底层角块" << endl;
         Sprint();
+        // 底层角块主函数
+
         if (JudgeFloorCorner())
         {
             cout << "测试底层角块结果正确" << endl;
@@ -777,6 +779,8 @@ namespace TestTools
 
 } // namespace TestTools
 using namespace TestTools;
+
+
 
 int main()
 {
