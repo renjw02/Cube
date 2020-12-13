@@ -55,6 +55,17 @@ char StandardColor[] = "GBORWY";
 ```
 ## 已经实现的功能及其说明
 
+### 输出函数
+
+```cpp
+void CrossTester()
+```
+输出样例如下
+
+GGB BWY BBO YRR RRW YYY 
+GGW BBW OOO BRO RWG YYY 
+GGG BBR GOO RRO WWO WYW 
+
 ### 旋转函数
 在实现旋转函数前先实现了3个辅助函数
 ```cpp

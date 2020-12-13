@@ -99,6 +99,20 @@ namespace IO
         }
     }
 
+    void SpiltPrint()
+    {
+        for (int i = 1; i <= 3; i++)
+        {
+            for (int j = 1; j <= 6; j++)
+            {
+                for (int k = 1; k <= 3; k++)
+                    cout << cube[j][i][k];
+                cout << ' ';
+            }
+            cout << endl;
+        }
+    }
+
 } // namespace IO
 using namespace IO;
 
@@ -527,6 +541,10 @@ namespace Cross
     {
         char std = cube[6][2][2];
         bool res = (cube[6][1][2] == std && cube[6][2][1] == std && cube[6][2][3] == std && cube[6][3][2] == std);
+        res = res && cube[1][3][2] == cube[1][2][2];
+        res = res && cube[2][3][2] == cube[2][2][2];
+        res = res && cube[3][3][2] == cube[3][2][2];
+        res = res && cube[4][3][2] == cube[4][2][2];
 #ifdef CrossDebug
         if (res)
         {
@@ -683,7 +701,7 @@ namespace TestTools
     //用于测试底层十字的函数
     void CrossTester()
     {
-        int n = 3000;
+        int n = 3;
         lim = 0;
         for (int i = 0; i <= 9; i++)
             stack[i] = 0;
@@ -691,14 +709,16 @@ namespace TestTools
         for (int i = 1; i <= n; i++)
         {
             ReSet();
-            TestCaseGenerator(50, time(0) + i * 5);
+            TestCaseGenerator(10, time(0) + i * 5);
             cout << "TestCase " << i << endl;
             SearchCross();
+            SpiltPrint();
         }
         cout << endl;
         cout << "Average : " << Sumtime / n << endl;
         cout << "Maxtime : " << Maxtime << endl
              << endl;
+        
         fclose(stdout);
     }
 
