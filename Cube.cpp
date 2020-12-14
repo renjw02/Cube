@@ -38,8 +38,9 @@ using namespace std;
 // 预编译指令
 // #define RotateDebug
 #define CrossDebug
-//#define OutputFormula
+#define OutputFormula
 
+int OptsNum = 0;
 namespace DataStructure
 {
     // 数据结构
@@ -507,14 +508,33 @@ namespace Operate
         }
     }
 
+    void PrintChar(const char x)
+    {
+        if (x == 'r')
+            cout << "Ri";
+        else if (x == 'l')
+            cout << "Li";
+        else if (x == 'b')
+            cout << "Bi";
+        else if (x == 'd')
+            cout << "Di";
+        else if (x == 'u')
+            cout << "Ui";
+        else
+        {
+            cout << x;
+        }
+    }
     // 执行一段公式，Formula为公式对应数组，len为公式长度
     void RunFormula(char *Formula, int len)
     {
         for (int i = 0; i < len; i++)
         {
             StringToRotate(Formula[i]);
+            OptsNum++;
 #ifdef OutputFormula
-            cout << Formula[i] << ' ';
+            PrintChar(Formula[i]);
+            cout << ' ';
 #endif
         }
     }
@@ -879,7 +899,7 @@ namespace SecondEdge
         else
         {
             RunFormula("UU", 2);
-            Back(4, 2);
+            Back(4, 1);
         }
     }
 } // namespace SecondEdge
@@ -913,7 +933,6 @@ namespace TopCross
     {
         if (matchtopcross() == 1)
             return;
-        
 
         bool check = false;
         for (int i = 1; i <= 4; i++)
@@ -1266,7 +1285,7 @@ namespace bottomcorner
     //次数可以减少！！！！！
     void TurnupCorner()
     {
-        for (int i = 1; i <= 4; i++)
+        for (int i = 1; i <= 16; i++)
         {
             //如果还原了，记录
             if (flag[1] == 0)
@@ -1291,6 +1310,10 @@ namespace bottomcorner
     //恢复底角的主函数
     void botcongw()
     {
+        amt = 0;
+        memset(flag, 0, sizeof flag);
+        flag[0] = 1;
+
         //顶层有  则还原
         TurnupCorner();
         //此时4块中已经还原了 amt 块
@@ -1348,17 +1371,17 @@ namespace TopCorner
     {
         for (int i = 1; i <= 4; i++)
         {
-            if(IsColorMarch())
+            if (IsColorMarch())
             {
                 return;
             }
-            RunFormula("U",1);
+            RunFormula("U", 1);
         }
     }
 
     void TopCorner()
     {
-        if(IsTopCorner())
+        if (IsTopCorner())
         {
             MarchColor();
             return;
@@ -1373,7 +1396,7 @@ namespace TopCorner
                 RunFormula("RbRFFrBRFFRR", 12);
                 break;
             }
-            RunFormula("U",1);
+            RunFormula("U", 1);
         }
         if (!flag)
         {
@@ -1386,7 +1409,7 @@ namespace TopCorner
                     RunFormula("RbRFFrBRFFRR", 12);
                     break;
                 }
-                RunFormula("U",1);
+                RunFormula("U", 1);
             }
         }
     }
@@ -1395,29 +1418,103 @@ namespace TopCorner
 // 顶层棱块 未施工完成
 namespace TopMid
 {
-    void TopMid()
+
+    bool IsTopMid()
     {
         for (int i = 1; i <= 4; i++)
         {
-            if (cube[1][1][1] == cube[1][2][2])
+            if (cube[i][1][2] != cube[i][1][1])
+                return 0;
+        }
+        return 1;
+    }
+
+    bool IsColorMarch()
+    {
+        for (int i = 1; i <= 4; i++)
+        {
+            if (cube[i][1][2] != cube[i][2][2])
+                return 0;
+        }
+        return 1;
+    }
+
+    void MarchColor()
+    {
+        for (int i = 1; i <= 4; i++)
+        {
+            if (IsColorMarch())
             {
+                return;
+            }
+            RunFormula("U", 1);
+        }
+    }
+
+    void TopMid()
+    {
+        if (IsTopMid())
+        {
+            MarchColor();
+        }
+
+        int flag = 0;
+
+        for (int i = 1; i <= 4; i++)
+        {
+            if (cube[1][1][2] == cube[3][1][1] && cube[3][1][2] == cube[4][1][1] && cube[4][1][2] == cube[1][1][1])
+            {
+                RunFormula("RUrURUUr", 8);
+                RunFormula("U", 1);
+                RunFormula("luLulUUL", 8);
+                flag = 1;
+                break;
+            }
+            else if (cube[1][1][2] == cube[4][1][1] && cube[4][1][2] == cube[3][1][1] && cube[3][1][2] == cube[1][1][1])
+            {
+                RunFormula("luLulUUL", 8);
+                RunFormula("u", 1);
+                RunFormula("RUrURUUr", 8);
+                flag = 1;
                 break;
             }
             RunFormula("U", 1);
         }
 
-        if (cube[1][1][2] == 'R' && cube[2][1][2] == 'B' && cube[3][1][2] == 'G' && cube[4][1][2] == 'O')
+        if (!flag)
         {
-            RunFormula("RuRURURuruRR", 12);
+            RunFormula("RUrURUUr", 8);
+            RunFormula("U", 1);
+            RunFormula("luLulUUL", 8);
+        }
+        else
+        {
+            MarchColor();
+            return;
         }
 
-        if (cube[1][1][2] == 'O' && cube[2][1][2] == 'B' && cube[3][1][2] == 'R' && cube[4][1][2] == 'G')
+        for (int i = 1; i <= 4; i++)
         {
-            RunFormula("UU", 2);
-            RunFormula("rUr", 12);
+            if (cube[1][1][2] == cube[3][1][1] && cube[3][1][2] == cube[4][1][1] && cube[4][1][2] == cube[1][1][1])
+            {
+                RunFormula("RUrURUUr", 8);
+                RunFormula("U", 1);
+                RunFormula("luLulUUL", 8);
+                break;
+            }
+            else if (cube[1][1][2] == cube[4][1][1] && cube[4][1][2] == cube[3][1][1] && cube[3][1][2] == cube[1][1][1])
+            {
+                RunFormula("luLulUUL", 8);
+                RunFormula("u", 1);
+                RunFormula("RUrURUUr", 8);
+                break;
+            }
+            RunFormula("U", 1);
         }
+
+        MarchColor();
     }
-} // namespace TopmMid
+} // namespace TopMid
 
 namespace TestTools
 {
@@ -1564,33 +1661,83 @@ using namespace TestTools;
 void MainFunction()
 {
     // Step1 : 底层十字
+    //SpiltPrint();
+    //Sprint();
     BruteCross::BruteCross();
-
-    SpiltPrint();
+    //SpiltPrint();
 
     // Step2 :
     bottomcorner::botcongw();
-
-    SpiltPrint();
+    //SpiltPrint();
 
     // Step3 : 第二层棱块归位
     SecondEdge::SecondEdge();
-
-    SpiltPrint();
+    //SpiltPrint();
 
     // Step4 : 顶层十字
     TopCross::perform();
-
-    SpiltPrint();
+    //SpiltPrint();
 
     // Step5 : 顶面还原
     TopReduction::crossTran();
+    //SpiltPrint();
 
-    SpiltPrint();
     // Step6 : 顶层角块
     TopCorner::TopCorner();
+    //SpiltPrint();
 
     // Step7 : 顶层棱块
+    TopMid::TopMid();
+    //SpiltPrint();
+}
+
+bool IsEnd()
+{
+    for (int i = 1; i <= 6; i++)
+        for (int j = 1; j <= 3; j++)
+            for (int k = 1; k <= 3; k++)
+                if (cube[i][j][k] != cube[i][2][2])
+                    return 0;
+    return 1;
+}
+
+void FinalTest()
+{
+    int n = 10000;
+
+    freopen("Result.txt", "w", stdout);
+
+    int success = 0;
+    int out = 0;
+    int maxStep = 0;
+    for (int i = 1; i <= n; i++)
+    {
+        OptsNum = 0;
+        cout << "TestCase:" << i << endl;
+        TestCaseGenerator(50, time(0) + i * 5);
+        MainFunction();
+        if (IsEnd())
+        {
+            cout << "Right" << endl;
+            success++;
+        }
+        else
+        {
+            cout << "Wrong" << endl;
+        }
+        cout << OptsNum << endl;
+        maxStep = max(maxStep,OptsNum);
+        if (OptsNum > 1000)
+        {
+            cout << "Too Long !!!" << endl;
+            out++;
+        }
+    }
+
+    cout << success << '/' << n << endl;
+    cout << out << '/' << n << endl;
+    cout << maxStep << endl;
+    fclose(stdout);
 }
 
 int main()
@@ -1598,6 +1745,7 @@ int main()
     // 初始化动态数组cube
     init();
 
+    Sread();
     // 随机生成测试数据
     //TestCaseGenerator(60);
 
@@ -1606,7 +1754,12 @@ int main()
 
     //TestTools::FloorCornerTester();
 
-    TestCaseGenerator(50, time(0));
+    //TestCaseGenerator(50, time(0));
+    // MainFunction();
+    // SpiltPrint();
+    //bottomcorner::amt = 0;
+    //FinalTest();
+
     MainFunction();
-    SpiltPrint();
+    // cout << endl << OptsNum << endl;
 }
