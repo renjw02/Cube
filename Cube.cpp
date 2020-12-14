@@ -38,7 +38,7 @@ using namespace std;
 // 预编译指令
 // #define RotateDebug
 #define CrossDebug
-#define OutputFormula
+//#define OutputFormula
 
 namespace DataStructure
 {
@@ -922,9 +922,9 @@ namespace SecondEdge
     {
         char *Back11 = "UFufulUL";
         char *Back12 = "ulULUFuf";
-        char *Back21 = "URURUFUF";
+        char *Back21 = "URurufUF";
         char *Back22 = "ufUFURur";
-        char *Back31 = "UBubulUL";
+        char *Back31 = "UBuburUR";
         char *Back32 = "urURUBub";
         char *Back41 = "ULulubUB";
         char *Back42 = "ubUBULul";
@@ -1023,6 +1023,50 @@ namespace SecondEdge
     }
 } // namespace SecondEdge
 
+//接口函数名perform， 作用：将已经还原第二层的魔方还原好顶层十字，无参数，直接作用与全局数组Cube；
+namespace TopCross
+{
+
+    bool matchtopcross()        //判断完成顶面十字
+    {
+        if(cube[5][1][2] == 'W' && cube[5][2][1] == 'W' && cube[5][2][3] == 'W' && cube[5][3][2] == 'W')
+            return 1;
+        return 0;
+    }
+
+    bool yizima()
+    {
+        if(cube[5][2][2] == cube[5][1][2] && cube[5][2][2] == cube[5][2][1]) return 1;
+        return 0;
+    }
+
+    bool litcon()
+    {
+        if(cube[5][2][1] == cube[5][2][2] && cube[5][2][3] == cube[5][2][2]) return 1;
+        return 0;
+    }
+
+    void perform()
+    {
+        if(matchtopcross() == 1) return;
+		
+		bool check = false;
+        for(int i = 1; i <= 4; i++)
+        {
+            if(yizima()	|| litcon())	//一字马、小拐角
+            {
+            	check = true;
+				break;
+			}    
+            RunFormula("U", 1);
+        }
+
+        RunFormula("FRUruf",6);
+        perform();	     
+    }
+
+}
+
 //接口函数名crossTran，作用：将已经还原顶层十字的魔方顶层还原，无参数，直接作用与全局数组Cube；
 namespace TopReduction
 {
@@ -1030,7 +1074,7 @@ namespace TopReduction
     {
         int num = 0;
         for (int i = 1; i < 4; i++)
-            for (int j = 0; j < 4; j++)
+            for (int j = 1; j < 4; j++)
                 if (cube[5][i][j] == 'W')
                     num++;
         return num;
@@ -1049,12 +1093,12 @@ namespace TopReduction
 
     void Back(int number)
     {
-        char *back1 = "BUbBUUb";
-        char *back2 = "buBubuuB";
+        char *back1 = "BUbUBUUb";
+        char *back2 = "buBubuuB";//右下
         if (number == 1)
-            RunFormula(back1, 7);
+            RunFormula(back1,8);
         else if (number == 2)
-            RunFormula(back2, 7);
+            RunFormula(back2,8);
     }
 
     void Backsix()
@@ -1114,6 +1158,120 @@ namespace TopReduction
     }
 } // namespace TopReduction
 
+//接口函数名TestSecondEdge, 作用：测试将已经还原底层的魔方还原好第二层棱块；已经通过测试；
+namespace TestSecondEdge
+{
+    char optss[9][9] = {"UFufulUL", "ulULUFuf", "URurufUF", "ufUFURur", "UBuburUR", "urURUBub", "ULulubUB", "ubUBULul", "FRUrufUU"};
+
+    void TestSecondEdgeGenerator(int len, int Seed = 0)
+    {
+        ReSet();
+        if (Seed == 0)
+            Seed = int(time(0));
+        cout << "生成测试数据所用的随机数种子为：" << Seed << endl;
+        srand(Seed);
+        cout << "生成测试案例的打乱公式为" << endl;
+        for (int i = 1; i <= len; i++)
+        {
+            char *op = optss[rand() % 9];
+            //cout << op << ' ';
+            RunFormula(op, 8);
+            cout << op;
+            SpiltPrint();
+        }
+        cout << endl
+             << "生成魔方的状态为：" << endl;
+        
+    }
+
+    bool Right()
+    {
+        for (int i = 1; i < 4; i++)
+            for (int j = 1; j < 4; j++)
+                if (cube[6][i][j] != 'Y')
+                    return 0;
+        for (int i = 1; i < 4; i++)
+        {
+            if (cube[1][3][i] != 'G'  || cube[1][2][i] != 'G')
+                return 0;
+            if (cube[2][3][i] != 'B' || cube[2][2][i] != 'B')
+                return 0;
+            if (cube[3][3][i] != 'O' || cube[3][2][i] != 'O')
+                return 0;
+            if (cube[4][3][i] != 'R' || cube[4][2][i] != 'R')
+                return 0;
+        }
+        return 1;
+    }
+
+    void TestSecondEdge()
+    {
+        TestSecondEdge::TestSecondEdgeGenerator(500, 0);
+        SecondEdge::SecondEdge();
+        SpiltPrint();
+        cout << Right();
+    }
+
+}
+
+//接口函数名TestTopReduction, 作用： 测试将已经还原好第二层棱块的魔方还原顶层十字与顶层还原
+namespace TestTopReduction
+{
+    char optss[3][10] = {"BUbUBUUb", "buBubuuB", "FRUrufUU"};
+
+    void TestTopReductionGenerator(int len, int Seed = 0)
+    {
+        ReSet();
+        if (Seed == 0)
+            Seed = int(time(0));
+        cout << "生成测试数据所用的随机数种子为：" << Seed << endl;
+        srand(Seed);
+        cout << "生成测试案例的打乱公式为" << endl;
+        for (int i = 1; i <= len; i++)
+        {
+            char *op = optss[rand() % 3];
+            RunFormula(op, 8);
+            /*cout << op;
+            SpiltPrint();*/
+        }
+        cout << endl
+             << "生成魔方的状态为：" << endl;
+    }
+
+    bool Right()
+    {
+        for (int i = 1; i < 4; i++)
+            for (int j = 1; j < 4; j++)
+                if (cube[6][i][j] != 'Y')
+                    return 0;
+        for (int i = 1; i < 4; i++)
+            for (int j = 1; j < 4; j++)
+                if (cube[5][i][j] != 'W')
+                    return 0;
+        for (int i = 1; i < 4; i++)
+        {
+            if (cube[1][3][i] != 'G'  || cube[1][2][i] != 'G')
+                return 0;
+            if (cube[2][3][i] != 'B' || cube[2][2][i] != 'B')
+                return 0;
+            if (cube[3][3][i] != 'O' || cube[3][2][i] != 'O')
+                return 0;
+            if (cube[4][3][i] != 'R' || cube[4][2][i] != 'R')
+                return 0;
+        }
+        return 1;
+    }
+
+    void TestTopReduction()
+    {
+        TestTopReductionGenerator(10000,0);
+        TopCross::perform();
+        TopReduction::crossTran();
+        cout << Right();
+    }
+}
+
+  
 // 顶层角块 主函数 TopCorner::TopCorner();
 namespace TopCorner
 {
@@ -1129,7 +1287,6 @@ namespace TopCorner
                 break;
             }
         }
-
         if (!flag)
         {
             RunFormula("RbRFFrBRFFRR", 12);
@@ -1202,5 +1359,5 @@ int main()
     //TestCaseGenerator(60);
 
     //SearchCross();
-    CrossTester();
+    TestTopReduction::TestTopReduction();
 }
