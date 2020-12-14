@@ -899,6 +899,221 @@ namespace TestTools
 } // namespace TestTools
 using namespace TestTools;
 
+//接口函数名SecondEdge，作用：将已经还原底层的魔方还原好第二层棱块，无参数，直接作用与全局数组Cube；
+namespace SecondEdge
+{
+    void Out(int number)
+    {
+        char *out1 = "fufufUFUF";
+        char *out2 = "rururURUR";
+        char *out3 = "bububUBUB";
+        char *out4 = "lululULUL";
+        if (number == 1)
+            RunFormula(out1, 9);
+        if (number == 2)
+            RunFormula(out2, 9);
+        if (number == 3)
+            RunFormula(out3, 9);
+        if (number == 4)
+            RunFormula(out4, 9);
+    }
+
+    void Back(int num1, int num2)
+    {
+        char *Back11 = "UFufulUL";
+        char *Back12 = "ulULUFuf";
+        char *Back21 = "URURUFUF";
+        char *Back22 = "ufUFURur";
+        char *Back31 = "UBubulUL";
+        char *Back32 = "urURUBub";
+        char *Back41 = "ULulubUB";
+        char *Back42 = "ubUBULul";
+        if (num1 == 1 && num2 == 1)
+            RunFormula(Back11,8);
+        if (num1 == 1 && num2 == 2)
+            RunFormula(Back12,8);
+        if (num1 == 2 && num2 == 1)
+            RunFormula(Back21,8);
+        if (num1 == 2 && num2 == 2)
+            RunFormula(Back22,8);
+        if (num1 == 3 && num2 == 1)
+            RunFormula(Back31,8);
+        if (num1 == 3 && num2 == 2)
+            RunFormula(Back32,8);
+        if (num1 == 4 && num2 == 1)
+            RunFormula(Back41,8);
+        if (num1 == 4 && num2 == 2)
+            RunFormula(Back42,8);
+    }
+
+    void outThe(char color1, char color2)
+    {
+        if ((cube[1][2][1] == color1 && cube[3][2][3] == color2) || ((cube[1][2][1] == color2 && cube[3][2][3] == color1)))
+            Out(1);
+        else if ((cube[1][2][3] == color1 && cube[4][2][1] == color2) || ((cube[1][2][3] == color2 && cube[4][2][1] == color1)))
+            Out(2);
+        else if ((cube[4][2][3] == color1 && cube[2][2][1] == color2) || ((cube[4][2][3] == color2 && cube[2][2][1] == color1)))
+            Out(3);
+        else if ((cube[2][2][3] == color1 && cube[3][2][1] == color2) || ((cube[2][2][3] == color2 && cube[3][2][1] == color1)))
+            Out(4);
+    }
+
+    void aligment(char color1, char color2)
+    {
+        if ((cube[1][1][2] == color1 && cube[5][3][2] == color2) || ((cube[1][1][2] == color2 && cube[5][3][2] == color1)));
+        else if ((cube[4][1][2] == color1 && cube[5][2][3] == color2) || ((cube[4][1][2] == color2 && cube[5][2][3] == color1)))
+            RunFormula("U", 1);
+        else if ((cube[2][1][2] == color1 && cube[5][1][2] == color2) || ((cube[2][1][2] == color2 && cube[5][1][2] == color1)))
+            RunFormula("UU", 2);
+        else if ((cube[3][1][2] == color1 && cube[5][2][1] == color2) || ((cube[3][1][2] == color2 && cube[5][2][1] == color1)))
+            RunFormula("u", 1);
+    }
+
+    void SecondEdge()
+    {
+        char color1 = 'O', color2 = 'G';
+        outThe(color1, color2);
+        aligment(color1, color2);
+        if (cube[1][1][2] == color2)
+            Back(1,2);
+        else
+        {
+            RunFormula("U", 1);
+            Back(1,1);
+        }
+        color1 = 'G', color2 = 'R';
+        outThe(color1, color2);
+        aligment(color1, color2);
+        if (cube[1][1][2] == color2)
+        {
+            RunFormula("u", 1);
+            Back(2,2);
+        }
+        else
+        {
+            Back(2,1);
+        }
+        color1 = 'R', color2 = 'B';
+        outThe(color1, color2);
+        aligment(color1, color2);
+        if (cube[1][1][2] == color2)
+        {
+            RunFormula("UU", 2);
+            Back(3,2);
+        }
+        else
+        {
+            RunFormula("u", 1);
+            Back(3,1);
+        }
+        color1 = 'B', color2 = 'O';
+        outThe(color1, color2);
+        aligment(color1, color2);
+        if (cube[1][1][2] == color2)
+        {
+            RunFormula("U", 1);
+            Back(4,2);
+        }
+        else
+        {
+            RunFormula("UU", 2);
+            Back(4,2);
+        }
+    }
+}
+
+//接口函数名crossTran，作用：将已经还原顶层十字的魔方顶层还原，无参数，直接作用与全局数组Cube；
+namespace TopReduction
+{
+    int count()
+    {
+        int num = 0;
+        for (int i = 1; i < 4; i++)
+            for (int j = 0; j < 4; j++)
+                if (cube[5][i][j] == 'W')
+                    num++;
+        return num;
+    }
+
+    void aligment1()
+    {
+        if (cube[1][1][1] != 'W' && cube[1][1][3] != 'W')
+            return;
+        else 
+        {
+            RunFormula("U", 1);
+            aligment1();
+        }
+    }
+
+    void Back(int number)
+    {
+        char *back1 = "BUbBUUb";
+        char *back2 = "buBubuuB";
+        if (number == 1)
+            RunFormula(back1,7);
+        else if (number == 2)
+            RunFormula(back2,7);
+    }
+
+    void Backsix()
+    {
+        aligment1();
+            if (cube[5][3][3] == 'W')
+                Back(1);
+            else if (cube[5][3][1] == 'W')
+                Back(2);
+    }
+
+    void aligment2()
+    {
+        if (cube[2][1][3] == 'W')
+            return;
+        else
+        {
+           RunFormula("U", 1);
+            aligment2(); 
+        }
+    }
+
+    void aligment3()
+    {
+        if (cube[4][1][3] == 'W' && cube[3][1][1] == 'W')
+            return;
+        else
+        {
+            RunFormula("U", 1);
+            aligment3(); 
+        }
+    }
+
+    void crossTran()
+    {
+        int num = count();
+        if (num == 8)
+            return;
+        else if (num == 6)
+        {
+            Backsix();
+        }
+        else if (num == 7)
+        {
+            aligment2();
+            RunFormula("u",1);
+            Back(2);
+            Backsix();
+        }
+        else if (num == 5)
+        {
+           aligment3();
+            RunFormula("u",1);
+            Back(2);
+            Backsix();
+        }
+    }
+}
+
+
 int main()
 {
     // 初始化动态数组cube
