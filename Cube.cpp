@@ -520,6 +520,8 @@ namespace Operate
             cout << "Di";
         else if (x == 'u')
             cout << "Ui";
+        else if (x == 'f')
+            cout << "Fi";
         else
         {
             cout << x;
