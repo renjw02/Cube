@@ -640,6 +640,7 @@ namespace Cross
 } // namespace Cross
 using namespace Cross;
 
+// 主函数 BruteCross::BruteCross();
 namespace BruteCross
 {
     struct state
@@ -705,7 +706,7 @@ namespace BruteCross
             for (int i = 0; i < sizeof(Case3) / sizeof(state); i++)
                 RunState(Case3[i]);
             for (int i = 0; i < sizeof(Case4) / sizeof(state); i++)
-                RunState(Case4[i]);          
+                RunState(Case4[i]);
         }
 
         for (int i = 1; i <= 4; i++)
@@ -747,7 +748,6 @@ namespace BruteCross
             }
             RunFormula("U", 1);
         }
-
     }
 } // namespace BruteCross
 
@@ -819,17 +819,17 @@ namespace TestTools
             cout << "---------------------------------------" << endl;
             cout << "TestCase " << i << endl;
             TestCaseGenerator(10, time(0) + i * 5);
-            
+
             BruteCross::BruteCross();
-            
-            if(IsCross())
+
+            if (IsCross())
             {
                 ++success;
                 cout << "Right Cross" << endl;
             }
             else
                 cout << "Wrong Cross" << endl;
-            
+
             SpiltPrint();
             cout << "---------------------------------------" << endl;
         }
@@ -929,21 +929,21 @@ namespace SecondEdge
         char *Back41 = "ULulubUB";
         char *Back42 = "ubUBULul";
         if (num1 == 1 && num2 == 1)
-            RunFormula(Back11,8);
+            RunFormula(Back11, 8);
         if (num1 == 1 && num2 == 2)
-            RunFormula(Back12,8);
+            RunFormula(Back12, 8);
         if (num1 == 2 && num2 == 1)
-            RunFormula(Back21,8);
+            RunFormula(Back21, 8);
         if (num1 == 2 && num2 == 2)
-            RunFormula(Back22,8);
+            RunFormula(Back22, 8);
         if (num1 == 3 && num2 == 1)
-            RunFormula(Back31,8);
+            RunFormula(Back31, 8);
         if (num1 == 3 && num2 == 2)
-            RunFormula(Back32,8);
+            RunFormula(Back32, 8);
         if (num1 == 4 && num2 == 1)
-            RunFormula(Back41,8);
+            RunFormula(Back41, 8);
         if (num1 == 4 && num2 == 2)
-            RunFormula(Back42,8);
+            RunFormula(Back42, 8);
     }
 
     void outThe(char color1, char color2)
@@ -960,7 +960,8 @@ namespace SecondEdge
 
     void aligment(char color1, char color2)
     {
-        if ((cube[1][1][2] == color1 && cube[5][3][2] == color2) || ((cube[1][1][2] == color2 && cube[5][3][2] == color1)));
+        if ((cube[1][1][2] == color1 && cube[5][3][2] == color2) || ((cube[1][1][2] == color2 && cube[5][3][2] == color1)))
+            ;
         else if ((cube[4][1][2] == color1 && cube[5][2][3] == color2) || ((cube[4][1][2] == color2 && cube[5][2][3] == color1)))
             RunFormula("U", 1);
         else if ((cube[2][1][2] == color1 && cube[5][1][2] == color2) || ((cube[2][1][2] == color2 && cube[5][1][2] == color1)))
@@ -975,11 +976,11 @@ namespace SecondEdge
         outThe(color1, color2);
         aligment(color1, color2);
         if (cube[1][1][2] == color2)
-            Back(1,2);
+            Back(1, 2);
         else
         {
             RunFormula("U", 1);
-            Back(1,1);
+            Back(1, 1);
         }
         color1 = 'G', color2 = 'R';
         outThe(color1, color2);
@@ -987,11 +988,11 @@ namespace SecondEdge
         if (cube[1][1][2] == color2)
         {
             RunFormula("u", 1);
-            Back(2,2);
+            Back(2, 2);
         }
         else
         {
-            Back(2,1);
+            Back(2, 1);
         }
         color1 = 'R', color2 = 'B';
         outThe(color1, color2);
@@ -999,12 +1000,12 @@ namespace SecondEdge
         if (cube[1][1][2] == color2)
         {
             RunFormula("UU", 2);
-            Back(3,2);
+            Back(3, 2);
         }
         else
         {
             RunFormula("u", 1);
-            Back(3,1);
+            Back(3, 1);
         }
         color1 = 'B', color2 = 'O';
         outThe(color1, color2);
@@ -1012,15 +1013,15 @@ namespace SecondEdge
         if (cube[1][1][2] == color2)
         {
             RunFormula("U", 1);
-            Back(4,2);
+            Back(4, 2);
         }
         else
         {
             RunFormula("UU", 2);
-            Back(4,2);
+            Back(4, 2);
         }
     }
-}
+} // namespace SecondEdge
 
 //接口函数名crossTran，作用：将已经还原顶层十字的魔方顶层还原，无参数，直接作用与全局数组Cube；
 namespace TopReduction
@@ -1039,7 +1040,7 @@ namespace TopReduction
     {
         if (cube[1][1][1] != 'W' && cube[1][1][3] != 'W')
             return;
-        else 
+        else
         {
             RunFormula("U", 1);
             aligment1();
@@ -1051,18 +1052,18 @@ namespace TopReduction
         char *back1 = "BUbBUUb";
         char *back2 = "buBubuuB";
         if (number == 1)
-            RunFormula(back1,7);
+            RunFormula(back1, 7);
         else if (number == 2)
-            RunFormula(back2,7);
+            RunFormula(back2, 7);
     }
 
     void Backsix()
     {
         aligment1();
-            if (cube[5][3][3] == 'W')
-                Back(1);
-            else if (cube[5][3][1] == 'W')
-                Back(2);
+        if (cube[5][3][3] == 'W')
+            Back(1);
+        else if (cube[5][3][1] == 'W')
+            Back(2);
     }
 
     void aligment2()
@@ -1071,8 +1072,8 @@ namespace TopReduction
             return;
         else
         {
-           RunFormula("U", 1);
-            aligment2(); 
+            RunFormula("U", 1);
+            aligment2();
         }
     }
 
@@ -1083,7 +1084,7 @@ namespace TopReduction
         else
         {
             RunFormula("U", 1);
-            aligment3(); 
+            aligment3();
         }
     }
 
@@ -1099,20 +1100,98 @@ namespace TopReduction
         else if (num == 7)
         {
             aligment2();
-            RunFormula("u",1);
+            RunFormula("u", 1);
             Back(2);
             Backsix();
         }
         else if (num == 5)
         {
-           aligment3();
-            RunFormula("u",1);
+            aligment3();
+            RunFormula("u", 1);
             Back(2);
             Backsix();
         }
     }
-}
+} // namespace TopReduction
 
+// 顶层角块 主函数 TopCorner::TopCorner();
+namespace TopCorner
+{
+    void TopCorner()
+    {
+        int flag = 0;
+        for (int i = 1; i <= 4; i++)
+        {
+            if (cube[1][1][1] == cube[1][1][3])
+            {
+                flag = 1;
+                RunFormula("RbRFFrBRFFRR", 12);
+                break;
+            }
+        }
+
+        if (!flag)
+        {
+            RunFormula("RbRFFrBRFFRR", 12);
+            for (int i = 1; i <= 4; i++)
+            {
+                if (cube[1][1][1] == cube[1][1][3])
+                {
+                    flag = 1;
+                    RunFormula("RbRFFrBRFFRR", 12);
+                    break;
+                }
+            }
+        }
+    }
+} // namespace TopCorner
+
+// 顶层棱块 未施工完成
+namespace TopmMid
+{
+    void TopMid()
+    {
+        for (int i = 1;i <= 4; i++)
+        {
+            if (cube[1][1][1] == cube[1][2][2])
+            {
+                break;
+            }
+            RunFormula("U",1);
+        }
+
+        if (cube[1][1][2] == 'R' && cube[2][1][2] == 'B' && cube[3][1][2] == 'G' && cube[4][1][2] == 'O')
+        {
+            RunFormula("RuRURURuruRR",12);
+        }
+
+        if (cube[1][1][2] == 'O' && cube[2][1][2] == 'B' && cube[3][1][2] == 'R' && cube[4][1][2] == 'G')
+        {
+            RunFormula("UU",2);
+            RunFormula("rUr",12);
+        }
+    }
+} // namespace TopmMid
+
+void MainFunction()
+{
+    // Step1 : 底层十字
+    BruteCross::BruteCross();
+
+    // Step2 :
+
+    // Step3 : 第二层棱块归位
+    SecondEdge::SecondEdge();
+
+    // Step4 : 顶层十字
+
+    // Step5 : 顶面还原
+    TopReduction::crossTran();
+
+    // Step6 : 顶层角块
+
+    // Step7 : 顶层棱块
+}
 
 int main()
 {
