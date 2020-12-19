@@ -1,29 +1,3 @@
-/*
-    仓库位置：https://github.com/adfwer233/Cube
-
-    Update 11-16
-        实现了12种旋转函数
-    
-    Update 11-17
-        对12种旋转函数中的输出添加了预编译指令
-        实现了用于生成测试案例并输出打乱公式的函数
-
-    Update 11-23
-        实现了底层十字函数并编写了测试函数
-
-    Update 12-06
-        奇怪的多人合作
-        
-        奇怪的东西增加了
-        
-        又增加了
-        
-        为什么这么多奇怪的东西
-
-    Update 12-12
-        编写了测试底层角块的函数
-        对迭代加深搜索实现的底层十字进行了一些优化
-*/
 #include <iostream>
 #include <cstring>
 #include <fstream>
@@ -37,8 +11,10 @@ using namespace std;
 
 // 预编译指令
 // #define RotateDebug
-#define CrossDebug
+// #define CrossDebug
+// #define PrintEachStep
 #define OutputFormula
+
 
 int OptsNum = 0;
 namespace DataStructure
@@ -88,6 +64,43 @@ using namespace DataStructure;
 // 输入输出函数
 namespace IO
 {
+
+    char color[10];
+    int vis[10][10][10];
+    void StdToOrigin()
+    {
+        memset(vis, 0, sizeof vis);
+        for (int p = 0; p < 6; p++)
+            for (int i = 1; i <= 6; i++)
+                for (int j = 1; j <= 3; j++)
+                    for (int k = 1; k <= 3; k++)
+                        if (cube[i][j][k] == StandardColor[p] && !vis[i][j][k])
+                        {
+                            cube[i][j][k] = color[p];
+                            vis[i][j][k] = 1;
+                        }
+    }
+
+    void OriginToStd()
+    {
+        memset(vis, 0, sizeof vis);
+        for (int p = 0; p < 6; p++)
+            for (int i = 1; i <= 6; i++)
+                for (int j = 1; j <= 3; j++)
+                    for (int k = 1; k <= 3; k++)
+                        if (cube[i][j][k] == color[p] && !vis[i][j][k])
+                        {
+                            cube[i][j][k] = StandardColor[p];
+                            vis[i][j][k] = 1;
+                        }
+    }
+
+    void GetOrigin()
+    {
+        for (int i = 1; i <= 6; i++)
+            color[i - 1] = cube[i][2][2];
+    }
+
     // 从标准输入流中读入一个魔方，标准如guide文件所示
     void Sread()
     {
@@ -95,11 +108,14 @@ namespace IO
             for (int j = 1; j <= 3; j++)
                 for (int k = 1; k <= 3; k++)
                     cin >> cube[i][j][k];
+        GetOrigin();
+        OriginToStd();
     }
 
     // 将当前魔方的状态输出的到标准输出流中
     void Sprint()
     {
+        StdToOrigin();
         for (int i = 1; i <= 6; i++)
         {
             for (int j = 1; j <= 3; j++)
@@ -107,10 +123,12 @@ namespace IO
                     cout << cube[i][j][k];
             cout << endl;
         }
+        OriginToStd();
     }
 
     void SpiltPrint()
     {
+        StdToOrigin();
         cout << endl;
         for (int i = 1; i <= 3; i++)
         {
@@ -122,6 +140,7 @@ namespace IO
             }
             cout << endl;
         }
+        OriginToStd();
     }
 
 } // namespace IO
@@ -1304,6 +1323,7 @@ namespace bottomcorner
 
             if (amt == 4)
                 break;
+            if(matchcorner()) return;
             //还没有恢复4个 但有恢复的了
             RunFormula("U", 1);
         }
@@ -1417,7 +1437,7 @@ namespace TopCorner
     }
 } // namespace TopCorner
 
-// 顶层棱块 未施工完成
+// 顶层棱块 主函数 TopMid::Topmid();
 namespace TopMid
 {
 
@@ -1543,9 +1563,31 @@ namespace TestTools
 */
 
     // 生成测试案例的函数
+
+    char TestColor[6][6] = {
+        {'R', 'O', 'B', 'G', 'Y', 'W'},
+        {'W', 'Y', 'G', 'B', 'O', 'R'},
+        {'R', 'O', 'G', 'B', 'W', 'Y'},
+        {'W', 'Y', 'R', 'O', 'G', 'B'},
+        {'G', 'B', 'W', 'Y', 'R', 'O'},
+        {'Y', 'W', 'R', 'O', 'B', 'G'},
+    };
+
+    void ExReSet()
+    {
+        int x = rand() % 6;
+        for (int i = 1; i <= 6; i++)
+            for (int j = 1; j <= 3; j++)
+                for (int k = 1; k <= 3; k++)
+                    cube[i][j][k] = TestColor[x][i - 1];
+        int t = 0;
+    }
+
     void TestCaseGenerator(int len, int Seed = 0)
     {
-        ReSet();
+        ExReSet();
+        GetOrigin();
+        OriginToStd();
         if (Seed == 0)
             Seed = int(time(0));
         cout << "生成测试数据所用的随机数种子为：" << Seed << endl;
@@ -1558,8 +1600,8 @@ namespace TestTools
             StringToRotate(op);
         }
         cout << endl
-             << "生成魔方的状态为：" << endl;
-        //Sprint();
+             << "生成魔方的状态为：";
+        SpiltPrint();
     }
 
     //用于测试底层十字的函数
@@ -1591,10 +1633,6 @@ namespace TestTools
             SpiltPrint();
             cout << "---------------------------------------" << endl;
         }
-        cout << endl;
-        cout << "Average : " << Sumtime / n << endl;
-        cout << "Maxtime : " << Maxtime << endl
-             << endl;
         cout << success << '/' << n << endl;
         fclose(stdout);
     }
@@ -1660,37 +1698,65 @@ namespace TestTools
 } // namespace TestTools
 using namespace TestTools;
 
+#ifdef PrintEachStep
+int xstep = 0;
+void GetMessage()
+{
+    cout << endl;
+    cout << OptsNum - xstep << endl;
+    xstep = OptsNum;
+    //SpiltPrint();
+}
+#endif
+
 void MainFunction()
 {
+#ifdef PrintEachStep
+    xstep = 0;
+#endif
     // Step1 : 底层十字
     //SpiltPrint();
     //Sprint();
     BruteCross::BruteCross();
-    //SpiltPrint();
 
+#ifdef PrintEachStep
+    GetMessage();
+#endif
     // Step2 :
     bottomcorner::botcongw();
-    //SpiltPrint();
+#ifdef PrintEachStep
+    GetMessage();
+#endif
 
     // Step3 : 第二层棱块归位
     SecondEdge::SecondEdge();
-    //SpiltPrint();
+#ifdef PrintEachStep
+    GetMessage();
+#endif
 
     // Step4 : 顶层十字
     TopCross::perform();
-    //SpiltPrint();
+#ifdef PrintEachStep
+    GetMessage();
+#endif
 
     // Step5 : 顶面还原
     TopReduction::crossTran();
-    //SpiltPrint();
+#ifdef PrintEachStep
+    GetMessage();
+#endif
 
     // Step6 : 顶层角块
     TopCorner::TopCorner();
-    //SpiltPrint();
+#ifdef PrintEachStep
+    GetMessage();
+#endif
 
     // Step7 : 顶层棱块
     TopMid::TopMid();
-    //SpiltPrint();
+#ifdef PrintEachStep
+    GetMessage();
+#endif
 }
 
 bool IsEnd()
@@ -1705,16 +1771,17 @@ bool IsEnd()
 
 void FinalTest()
 {
-    int n = 10000;
+    int n = 30000;
 
     freopen("Result.txt", "w", stdout);
-
+    double SumStep = 0;
     int success = 0;
     int out = 0;
     int maxStep = 0;
     for (int i = 1; i <= n; i++)
     {
         OptsNum = 0;
+        cout << "---------------------------------------------------" << endl;
         cout << "TestCase:" << i << endl;
         TestCaseGenerator(50, time(0) + i * 5);
         MainFunction();
@@ -1727,18 +1794,21 @@ void FinalTest()
         {
             cout << "Wrong" << endl;
         }
-        cout << OptsNum << endl;
-        maxStep = max(maxStep,OptsNum);
+        SumStep += OptsNum;
+        cout << "所用步数" << OptsNum << endl;
+        maxStep = max(maxStep, OptsNum);
         if (OptsNum > 1000)
         {
             cout << "Too Long !!!" << endl;
             out++;
         }
+        cout << "---------------------------------------------------" << endl;
     }
 
-    cout << success << '/' << n << endl;
-    cout << out << '/' << n << endl;
-    cout << maxStep << endl;
+    cout << "成功次数" << success << '/' << n << endl;
+    cout << "步数超限次数" << out << '/' << n << endl;
+    cout << "最长步数" << maxStep << endl;
+    cout << "平均步数" << SumStep / n << endl;
     fclose(stdout);
 }
 
@@ -1746,22 +1816,10 @@ int main()
 {
     // 初始化动态数组cube
     init();
-
-    Sread();
-    // 随机生成测试数据
-    //TestCaseGenerator(60);
-
-    //SearchCross();
-    //TestTopReduction::TestTopReduction();
-
-    //TestTools::FloorCornerTester();
-
-    //TestCaseGenerator(50, time(0));
-    // MainFunction();
-    // SpiltPrint();
-    //bottomcorner::amt = 0;
+    // 最终测试函数
     //FinalTest();
-
+    // 读入
+    IO::Sread();
+    // 还原魔方主函数
     MainFunction();
-    // cout << endl << OptsNum << endl;
 }
