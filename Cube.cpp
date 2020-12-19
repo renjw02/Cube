@@ -15,7 +15,6 @@ using namespace std;
 // #define PrintEachStep
 #define OutputFormula
 
-
 int OptsNum = 0;
 namespace DataStructure
 {
@@ -144,7 +143,6 @@ namespace IO
     }
 
 } // namespace IO
-using namespace IO;
 
 // 12个旋转函数的名称空间
 namespace Rotate
@@ -423,8 +421,6 @@ namespace Rotate
     }
 
 } // namespace Rotate
-using namespace Rotate;
-
 namespace Operate
 {
 
@@ -432,29 +428,29 @@ namespace Operate
     void StringToRotate(const char ops)
     {
         if (ops == 'R')
-            R();
+            Rotate::R();
         else if (ops == 'r')
-            Ri();
+            Rotate::Ri();
         else if (ops == 'U')
-            U();
+            Rotate::U();
         else if (ops == 'u')
-            Ui();
+            Rotate::Ui();
         else if (ops == 'F')
-            F();
+            Rotate::F();
         else if (ops == 'f')
-            Fi();
+            Rotate::Fi();
         else if (ops == 'L')
-            L();
+            Rotate::L();
         else if (ops == 'l')
-            Li();
+            Rotate::Li();
         else if (ops == 'D')
-            D();
+            Rotate::D();
         else if (ops == 'd')
-            Di();
+            Rotate::Di();
         else if (ops == 'B')
-            B();
+            Rotate::B();
         else if (ops == 'b')
-            Bi();
+            Rotate::Bi();
         else
         {
             cout << "Wrong Rotate Type in Function " << endl;
@@ -465,29 +461,29 @@ namespace Operate
     void StringToAntirotate(const char ops)
     {
         if (ops == 'R')
-            Ri();
+            Rotate::Ri();
         else if (ops == 'r')
-            R();
+            Rotate::R();
         else if (ops == 'U')
-            Ui();
+            Rotate::Ui();
         else if (ops == 'u')
-            U();
+            Rotate::U();
         else if (ops == 'F')
-            Fi();
+            Rotate::Fi();
         else if (ops == 'f')
-            F();
+            Rotate::F();
         else if (ops == 'L')
-            Li();
+            Rotate::Li();
         else if (ops == 'l')
-            L();
+            Rotate::L();
         else if (ops == 'D')
-            Di();
+            Rotate::Di();
         else if (ops == 'd')
-            D();
+            Rotate::D();
         else if (ops == 'B')
-            Bi();
+            Rotate::Bi();
         else if (ops == 'b')
-            B();
+            Rotate::B();
         else
         {
             cout << "Wrong Rotate Type" << endl;
@@ -561,7 +557,6 @@ namespace Operate
     }
 
 } // namespace Operate
-using namespace Operate;
 
 namespace Cross
 {
@@ -629,15 +624,15 @@ namespace Cross
         {
             char op = opts[i];
             // 剪枝 ：连续两次进行了相反的操作
-            if (deep >= 2 && op == GetRevOpt(stack[deep - 1]))
+            if (deep >= 2 && op == Operate::GetRevOpt(stack[deep - 1]))
                 continue;
             // 剪枝 ：连续进行了三次同一方向的旋转
             if (deep >= 3 && op == stack[deep - 1] && op == stack[deep - 2])
                 continue;
             // 剪枝 : 该步操作与上一步操作无关且与上两步操作相反
-            if (deep >= 3 && op == GetRevOpt(stack[deep - 2]) && !JudgeRelevance(op, stack[deep - 1]))
+            if (deep >= 3 && op == Operate::GetRevOpt(stack[deep - 2]) && !JudgeRelevance(op, stack[deep - 1]))
                 continue;
-            StringToRotate(op);
+            Operate::StringToRotate(op);
             stack[deep] = op;
             res = res || IDFS(deep + 1);
             if (res == 1)
@@ -656,7 +651,7 @@ namespace Cross
                 return 1;
             }
             stack[deep] = 0;
-            StringToAntirotate(op);
+            Operate::StringToAntirotate(op);
         }
         return 0;
     }
@@ -688,7 +683,6 @@ namespace Cross
 #endif
     }
 } // namespace Cross
-using namespace Cross;
 
 // 主函数 BruteCross::BruteCross();
 namespace BruteCross
@@ -736,10 +730,10 @@ namespace BruteCross
             {
                 if (cube[x.to[0]][x.to[1]][x.to[2]] != 'Y')
                 {
-                    RunFormula(x.Formula, strlen(x.Formula));
+                    Operate::RunFormula(x.Formula, strlen(x.Formula));
                     break;
                 }
-                RunFormula("U", 1);
+                Operate::RunFormula("U", 1);
             }
         }
     }
@@ -763,40 +757,40 @@ namespace BruteCross
         {
             if (cube[1][1][2] == 'G' && cube[5][3][2] == 'Y')
             {
-                RunFormula("FF", 2);
+                Operate::RunFormula("FF", 2);
                 break;
             }
-            RunFormula("U", 1);
+            Operate::RunFormula("U", 1);
         }
 
         for (int i = 1; i <= 4; i++)
         {
             if (cube[3][1][2] == 'O' && cube[5][2][1] == 'Y')
             {
-                RunFormula("LL", 2);
+                Operate::RunFormula("LL", 2);
                 break;
             }
-            RunFormula("U", 1);
+            Operate::RunFormula("U", 1);
         }
 
         for (int i = 1; i <= 4; i++)
         {
             if (cube[4][1][2] == 'R' && cube[5][2][3] == 'Y')
             {
-                RunFormula("RR", 2);
+                Operate::RunFormula("RR", 2);
                 break;
             }
-            RunFormula("U", 1);
+            Operate::RunFormula("U", 1);
         }
 
         for (int i = 1; i <= 4; i++)
         {
             if (cube[2][1][2] == 'B' && cube[5][1][2] == 'Y')
             {
-                RunFormula("BB", 2);
+                Operate::RunFormula("BB", 2);
                 break;
             }
-            RunFormula("U", 1);
+            Operate::RunFormula("U", 1);
         }
     }
 } // namespace BruteCross
@@ -811,13 +805,13 @@ namespace SecondEdge
         char *out3 = "bububUBUB";
         char *out4 = "lululULUL";
         if (number == 1)
-            RunFormula(out1, 9);
+            Operate::RunFormula(out1, 9);
         if (number == 2)
-            RunFormula(out2, 9);
+            Operate::RunFormula(out2, 9);
         if (number == 3)
-            RunFormula(out3, 9);
+            Operate::RunFormula(out3, 9);
         if (number == 4)
-            RunFormula(out4, 9);
+            Operate::RunFormula(out4, 9);
     }
 
     void Back(int num1, int num2)
@@ -831,21 +825,21 @@ namespace SecondEdge
         char *Back41 = "ULulubUB";
         char *Back42 = "ubUBULul";
         if (num1 == 1 && num2 == 1)
-            RunFormula(Back11, 8);
+            Operate::RunFormula(Back11, 8);
         if (num1 == 1 && num2 == 2)
-            RunFormula(Back12, 8);
+            Operate::RunFormula(Back12, 8);
         if (num1 == 2 && num2 == 1)
-            RunFormula(Back21, 8);
+            Operate::RunFormula(Back21, 8);
         if (num1 == 2 && num2 == 2)
-            RunFormula(Back22, 8);
+            Operate::RunFormula(Back22, 8);
         if (num1 == 3 && num2 == 1)
-            RunFormula(Back31, 8);
+            Operate::RunFormula(Back31, 8);
         if (num1 == 3 && num2 == 2)
-            RunFormula(Back32, 8);
+            Operate::RunFormula(Back32, 8);
         if (num1 == 4 && num2 == 1)
-            RunFormula(Back41, 8);
+            Operate::RunFormula(Back41, 8);
         if (num1 == 4 && num2 == 2)
-            RunFormula(Back42, 8);
+            Operate::RunFormula(Back42, 8);
     }
 
     void outThe(char color1, char color2)
@@ -865,11 +859,11 @@ namespace SecondEdge
         if ((cube[1][1][2] == color1 && cube[5][3][2] == color2) || ((cube[1][1][2] == color2 && cube[5][3][2] == color1)))
             ;
         else if ((cube[4][1][2] == color1 && cube[5][2][3] == color2) || ((cube[4][1][2] == color2 && cube[5][2][3] == color1)))
-            RunFormula("U", 1);
+            Operate::RunFormula("U", 1);
         else if ((cube[2][1][2] == color1 && cube[5][1][2] == color2) || ((cube[2][1][2] == color2 && cube[5][1][2] == color1)))
-            RunFormula("UU", 2);
+            Operate::RunFormula("UU", 2);
         else if ((cube[3][1][2] == color1 && cube[5][2][1] == color2) || ((cube[3][1][2] == color2 && cube[5][2][1] == color1)))
-            RunFormula("u", 1);
+            Operate::RunFormula("u", 1);
     }
 
     void SecondEdge()
@@ -881,7 +875,7 @@ namespace SecondEdge
             Back(1, 2);
         else
         {
-            RunFormula("U", 1);
+            Operate::RunFormula("U", 1);
             Back(1, 1);
         }
         color1 = 'G', color2 = 'R';
@@ -889,7 +883,7 @@ namespace SecondEdge
         aligment(color1, color2);
         if (cube[1][1][2] == color2)
         {
-            RunFormula("u", 1);
+            Operate::RunFormula("u", 1);
             Back(2, 2);
         }
         else
@@ -901,12 +895,12 @@ namespace SecondEdge
         aligment(color1, color2);
         if (cube[1][1][2] == color2)
         {
-            RunFormula("UU", 2);
+            Operate::RunFormula("UU", 2);
             Back(3, 2);
         }
         else
         {
-            RunFormula("u", 1);
+            Operate::RunFormula("u", 1);
             Back(3, 1);
         }
         color1 = 'B', color2 = 'O';
@@ -914,12 +908,12 @@ namespace SecondEdge
         aligment(color1, color2);
         if (cube[1][1][2] == color2)
         {
-            RunFormula("U", 1);
+            Operate::RunFormula("U", 1);
             Back(4, 2);
         }
         else
         {
-            RunFormula("UU", 2);
+            Operate::RunFormula("UU", 2);
             Back(4, 1);
         }
     }
@@ -963,10 +957,10 @@ namespace TopCross
                 check = true;
                 break;
             }
-            RunFormula("U", 1);
+            Operate::RunFormula("U", 1);
         }
 
-        RunFormula("FRUruf", 6);
+        Operate::RunFormula("FRUruf", 6);
         perform();
     }
 
@@ -991,7 +985,7 @@ namespace TopReduction
             return;
         else
         {
-            RunFormula("U", 1);
+            Operate::RunFormula("U", 1);
             aligment1();
         }
     }
@@ -1001,9 +995,9 @@ namespace TopReduction
         char *back1 = "BUbUBUUb";
         char *back2 = "buBubuuB"; //右下
         if (number == 1)
-            RunFormula(back1, 8);
+            Operate::RunFormula(back1, 8);
         else if (number == 2)
-            RunFormula(back2, 8);
+            Operate::RunFormula(back2, 8);
     }
 
     void Backsix()
@@ -1021,7 +1015,7 @@ namespace TopReduction
             return;
         else
         {
-            RunFormula("U", 1);
+            Operate::RunFormula("U", 1);
             aligment2();
         }
     }
@@ -1032,7 +1026,7 @@ namespace TopReduction
             return;
         else
         {
-            RunFormula("U", 1);
+            Operate::RunFormula("U", 1);
             aligment3();
         }
     }
@@ -1049,14 +1043,14 @@ namespace TopReduction
         else if (num == 7)
         {
             aligment2();
-            RunFormula("u", 1);
+            Operate::RunFormula("u", 1);
             Back(2);
             Backsix();
         }
         else if (num == 5)
         {
             aligment3();
-            RunFormula("u", 1);
+            Operate::RunFormula("u", 1);
             Back(2);
             Backsix();
         }
@@ -1080,9 +1074,9 @@ namespace TestSecondEdge
         {
             char *op = optss[rand() % 9];
             //cout << op << ' ';
-            RunFormula(op, 8);
+            Operate::RunFormula(op, 8);
             cout << op;
-            SpiltPrint();
+            IO::SpiltPrint();
         }
         cout << endl
              << "生成魔方的状态为：" << endl;
@@ -1112,7 +1106,7 @@ namespace TestSecondEdge
     {
         TestSecondEdge::TestSecondEdgeGenerator(500, 0);
         SecondEdge::SecondEdge();
-        SpiltPrint();
+        IO::SpiltPrint();
         cout << Right();
     }
 
@@ -1134,7 +1128,7 @@ namespace TestTopReduction
         for (int i = 1; i <= len; i++)
         {
             char *op = optss[rand() % 3];
-            RunFormula(op, 8);
+            Operate::RunFormula(op, 8);
             /*cout << op;
             SpiltPrint();*/
         }
@@ -1208,21 +1202,21 @@ namespace bottomcorner
     {
         if (cube[4][1][1] == 'Y' && cube[1][1][3] == 'G' && cube[5][3][3] == 'R')
         {
-            RunFormula("RUru", 4);
+            Operate::RunFormula("RUru", 4);
             amt++;
             flag[1] = 1;
         }
         if (cube[1][1][3] == 'Y' && cube[5][3][3] == 'G' && cube[4][1][1] == 'R')
         {
-            RunFormula("URur", 4);
+            Operate::RunFormula("URur", 4);
             amt++;
             flag[1] = 1;
         }
         if (cube[5][3][3] == 'Y' && cube[4][1][1] == 'G' && cube[1][1][3] == 'R')
         {
-            RunFormula("RUru", 4);
-            RunFormula("RUru", 4);
-            RunFormula("RUru", 4);
+            Operate::RunFormula("RUru", 4);
+            Operate::RunFormula("RUru", 4);
+            Operate::RunFormula("RUru", 4);
             amt++;
             flag[1] = 1;
         }
@@ -1233,21 +1227,21 @@ namespace bottomcorner
     {
         if (cube[3][1][1] == 'Y' && cube[2][1][3] == 'B' && cube[5][1][1] == 'O')
         {
-            RunFormula("LUlu", 4);
+            Operate::RunFormula("LUlu", 4);
             amt++;
             flag[2] = 1;
         }
         if (cube[2][1][3] == 'Y' && cube[5][1][1] == 'B' && cube[3][1][1] == 'O')
         {
-            RunFormula("ULul", 4);
+            Operate::RunFormula("ULul", 4);
             amt++;
             flag[2] = 1;
         }
         if (cube[5][1][1] == 'Y' && cube[3][1][1] == 'B' && cube[2][1][3] == 'O')
         {
-            RunFormula("LUlu", 4);
-            RunFormula("LUlu", 4);
-            RunFormula("LUlu", 4);
+            Operate::RunFormula("LUlu", 4);
+            Operate::RunFormula("LUlu", 4);
+            Operate::RunFormula("LUlu", 4);
             amt++;
             flag[2] = 1;
         }
@@ -1258,21 +1252,21 @@ namespace bottomcorner
     {
         if (cube[1][1][1] == 'Y' && cube[3][1][3] == 'O' && cube[5][3][1] == 'G')
         {
-            RunFormula("FUfu", 4);
+            Operate::RunFormula("FUfu", 4);
             amt++;
             flag[3] = 1;
         }
         if (cube[3][1][3] == 'Y' && cube[5][3][1] == 'O' && cube[1][1][1] == 'G')
         {
-            RunFormula("UFuf", 4);
+            Operate::RunFormula("UFuf", 4);
             amt++;
             flag[3] = 1;
         }
         if (cube[5][3][1] == 'Y' && cube[1][1][1] == 'O' && cube[3][1][3] == 'G')
         {
-            RunFormula("FUfu", 4);
-            RunFormula("FUfu", 4);
-            RunFormula("FUfu", 4);
+            Operate::RunFormula("FUfu", 4);
+            Operate::RunFormula("FUfu", 4);
+            Operate::RunFormula("FUfu", 4);
             amt++;
             flag[3] = 1;
         }
@@ -1283,21 +1277,21 @@ namespace bottomcorner
     {
         if (cube[2][1][1] == 'Y' && cube[4][1][3] == 'R' && cube[5][1][3] == 'B')
         {
-            RunFormula("BUbu", 4);
+            Operate::RunFormula("BUbu", 4);
             amt++;
             flag[4] = 1;
         }
         if (cube[4][1][3] == 'Y' && cube[5][1][3] == 'R' && cube[2][1][1] == 'B')
         {
-            RunFormula("UBub", 4);
+            Operate::RunFormula("UBub", 4);
             amt++;
             flag[4] = 1;
         }
         if (cube[5][1][3] == 'Y' && cube[2][1][1] == 'R' && cube[4][1][3] == 'B')
         {
-            RunFormula("BUbu", 4);
-            RunFormula("BUbu", 4);
-            RunFormula("BUbu", 4);
+            Operate::RunFormula("BUbu", 4);
+            Operate::RunFormula("BUbu", 4);
+            Operate::RunFormula("BUbu", 4);
             amt++;
             flag[4] = 1;
         }
@@ -1325,7 +1319,7 @@ namespace bottomcorner
                 break;
             if(matchcorner()) return;
             //还没有恢复4个 但有恢复的了
-            RunFormula("U", 1);
+            Operate::RunFormula("U", 1);
         }
     }
 
@@ -1345,30 +1339,30 @@ namespace bottomcorner
         {
             if (flag[1] == 0) //1面的没归位
             {
-                RunFormula("RUr", 3);
-                RunFormula("RUr", 3);
-                RunFormula("RUr", 3);
+                Operate::RunFormula("RUr", 3);
+                Operate::RunFormula("RUr", 3);
+                Operate::RunFormula("RUr", 3);
                 TurnupCorner();
             }
             if (flag[2] == 0) //2面的没归位
             {
-                RunFormula("LUl", 3);
-                RunFormula("LUl", 3);
-                RunFormula("LUl", 3);
+                Operate::RunFormula("LUl", 3);
+                Operate::RunFormula("LUl", 3);
+                Operate::RunFormula("LUl", 3);
                 TurnupCorner();
             }
             if (flag[3] == 0) //3面的没归位
             {
-                RunFormula("FUf", 3);
-                RunFormula("FUf", 3);
-                RunFormula("FUf", 3);
+                Operate::RunFormula("FUf", 3);
+                Operate::RunFormula("FUf", 3);
+                Operate::RunFormula("FUf", 3);
                 TurnupCorner();
             }
             if (flag[4] == 0) //4面的没归位
             {
-                RunFormula("BUb", 3);
-                RunFormula("BUb", 3);
-                RunFormula("BUb", 3);
+                Operate::RunFormula("BUb", 3);
+                Operate::RunFormula("BUb", 3);
+                Operate::RunFormula("BUb", 3);
                 TurnupCorner();
             }
         }
@@ -1397,7 +1391,7 @@ namespace TopCorner
             {
                 return;
             }
-            RunFormula("U", 1);
+            Operate::RunFormula("U", 1);
         }
     }
 
@@ -1415,23 +1409,23 @@ namespace TopCorner
             if (cube[1][1][1] == cube[1][1][3])
             {
                 flag = 1;
-                RunFormula("RbRFFrBRFFRR", 12);
+                Operate::RunFormula("RbRFFrBRFFRR", 12);
                 break;
             }
-            RunFormula("U", 1);
+            Operate::RunFormula("U", 1);
         }
         if (!flag)
         {
-            RunFormula("RbRFFrBRFFRR", 12);
+            Operate::RunFormula("RbRFFrBRFFRR", 12);
             for (int i = 1; i <= 4; i++)
             {
                 if (cube[1][1][1] == cube[1][1][3])
                 {
                     flag = 1;
-                    RunFormula("RbRFFrBRFFRR", 12);
+                    Operate::RunFormula("RbRFFrBRFFRR", 12);
                     break;
                 }
-                RunFormula("U", 1);
+                Operate::RunFormula("U", 1);
             }
         }
     }
@@ -1469,7 +1463,7 @@ namespace TopMid
             {
                 return;
             }
-            RunFormula("U", 1);
+            Operate::RunFormula("U", 1);
         }
     }
 
@@ -1486,28 +1480,28 @@ namespace TopMid
         {
             if (cube[1][1][2] == cube[3][1][1] && cube[3][1][2] == cube[4][1][1] && cube[4][1][2] == cube[1][1][1])
             {
-                RunFormula("RUrURUUr", 8);
-                RunFormula("U", 1);
-                RunFormula("luLulUUL", 8);
+                Operate::RunFormula("RUrURUUr", 8);
+                Operate::RunFormula("U", 1);
+                Operate::RunFormula("luLulUUL", 8);
                 flag = 1;
                 break;
             }
             else if (cube[1][1][2] == cube[4][1][1] && cube[4][1][2] == cube[3][1][1] && cube[3][1][2] == cube[1][1][1])
             {
-                RunFormula("luLulUUL", 8);
-                RunFormula("u", 1);
-                RunFormula("RUrURUUr", 8);
+                Operate::RunFormula("luLulUUL", 8);
+                Operate::RunFormula("u", 1);
+                Operate::RunFormula("RUrURUUr", 8);
                 flag = 1;
                 break;
             }
-            RunFormula("U", 1);
+            Operate::RunFormula("U", 1);
         }
 
         if (!flag)
         {
-            RunFormula("RUrURUUr", 8);
-            RunFormula("U", 1);
-            RunFormula("luLulUUL", 8);
+            Operate::RunFormula("RUrURUUr", 8);
+            Operate::RunFormula("U", 1);
+            Operate::RunFormula("luLulUUL", 8);
         }
         else
         {
@@ -1519,19 +1513,19 @@ namespace TopMid
         {
             if (cube[1][1][2] == cube[3][1][1] && cube[3][1][2] == cube[4][1][1] && cube[4][1][2] == cube[1][1][1])
             {
-                RunFormula("RUrURUUr", 8);
-                RunFormula("U", 1);
-                RunFormula("luLulUUL", 8);
+                Operate::RunFormula("RUrURUUr", 8);
+                Operate::RunFormula("U", 1);
+                Operate::RunFormula("luLulUUL", 8);
                 break;
             }
             else if (cube[1][1][2] == cube[4][1][1] && cube[4][1][2] == cube[3][1][1] && cube[3][1][2] == cube[1][1][1])
             {
-                RunFormula("luLulUUL", 8);
-                RunFormula("u", 1);
-                RunFormula("RUrURUUr", 8);
+                Operate::RunFormula("luLulUUL", 8);
+                Operate::RunFormula("u", 1);
+                Operate::RunFormula("RUrURUUr", 8);
                 break;
             }
-            RunFormula("U", 1);
+            Operate::RunFormula("U", 1);
         }
 
         MarchColor();
@@ -1548,7 +1542,7 @@ namespace TestTools
         while (1)
         {
             cin >> op;
-            StringToRotate(op);
+            Operate::StringToRotate(op);
         }
     }
 
@@ -1586,8 +1580,8 @@ namespace TestTools
     void TestCaseGenerator(int len, int Seed = 0)
     {
         ExReSet();
-        GetOrigin();
-        OriginToStd();
+        IO::GetOrigin();
+        IO::OriginToStd();
         if (Seed == 0)
             Seed = int(time(0));
         cout << "生成测试数据所用的随机数种子为：" << Seed << endl;
@@ -1597,11 +1591,11 @@ namespace TestTools
         {
             char op = opts[rand() % 12];
             cout << op << ' ';
-            StringToRotate(op);
+            Operate::StringToRotate(op);
         }
         cout << endl
              << "生成魔方的状态为：";
-        SpiltPrint();
+        IO::SpiltPrint();
     }
 
     //用于测试底层十字的函数
@@ -1609,9 +1603,9 @@ namespace TestTools
     {
         int n = 30000;
         int success = 0;
-        lim = 0;
+        Cross::lim = 0;
         for (int i = 0; i <= 9; i++)
-            stack[i] = 0;
+            Cross::stack[i] = 0;
         freopen("CrossResult.txt", "w", stdout);
         for (int i = 1; i <= n; i++)
         {
@@ -1622,7 +1616,7 @@ namespace TestTools
 
             BruteCross::BruteCross();
 
-            if (IsCross())
+            if (Cross::IsCross())
             {
                 ++success;
                 cout << "Right Cross" << endl;
@@ -1630,7 +1624,7 @@ namespace TestTools
             else
                 cout << "Wrong Cross" << endl;
 
-            SpiltPrint();
+            IO::SpiltPrint();
             cout << "---------------------------------------" << endl;
         }
         cout << success << '/' << n << endl;
@@ -1639,7 +1633,7 @@ namespace TestTools
 
     bool JudgeFloorCorner()
     {
-        if (!IsCross)
+        if (!Cross::IsCross)
             return 0;
         bool res = 1;
         for (int i = 1; i <= 4; i++)
@@ -1669,7 +1663,7 @@ namespace TestTools
         for (int i = 1; i <= num; i++)
         {
             int x = rand() % n;
-            RunFormula(F[x], strlen(F[x]));
+            Operate::RunFormula(F[x], strlen(F[x]));
         }
     }
 
@@ -1678,7 +1672,7 @@ namespace TestTools
         cout << "-----------------------------------------------------------" << endl;
         FloorCornerGenerator(50);
         cout << "生成底层角块" << endl;
-        SpiltPrint();
+        IO::SpiltPrint();
         // 底层角块主函数
         bottomcorner::botcongw();
 
@@ -1691,12 +1685,11 @@ namespace TestTools
             cout << "测试底层角块结果不正确" << endl;
         }
         cout << "操作结果为：" << endl;
-        SpiltPrint();
+        IO::SpiltPrint();
         cout << "-----------------------------------------------------------" << endl;
     }
 
 } // namespace TestTools
-using namespace TestTools;
 
 #ifdef PrintEachStep
 int xstep = 0;
@@ -1705,7 +1698,7 @@ void GetMessage()
     cout << endl;
     cout << OptsNum - xstep << endl;
     xstep = OptsNum;
-    //SpiltPrint();
+    //IO::SpiltPrint();
 }
 #endif
 
@@ -1783,7 +1776,7 @@ void FinalTest()
         OptsNum = 0;
         cout << "---------------------------------------------------" << endl;
         cout << "TestCase:" << i << endl;
-        TestCaseGenerator(50, time(0) + i * 5);
+        TestTools::TestCaseGenerator(50, time(0) + i * 5);
         MainFunction();
         if (IsEnd())
         {
