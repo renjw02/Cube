@@ -728,6 +728,17 @@ namespace BruteCross
         {
             for (int i = 1; i <= 4; i++)
             {
+                if (x.from[0] == 6)
+                {
+                    if (x.from[1] == 1 && x.from[2] == 2 && cube[1][3][2] == cube[1][2][2]) 
+                        return;
+                    if (x.from[1] == 2 && x.from[2] == 1 && cube[3][3][2] == cube[3][2][2]) 
+                        return;
+                    if (x.from[1] == 2 && x.from[2] == 3 && cube[4][3][2] == cube[4][2][2]) 
+                        return;
+                    if (x.from[1] == 3 && x.from[2] == 2 && cube[2][3][2] == cube[2][2][2]) 
+                        return;                        
+                }
                 if (cube[x.to[0]][x.to[1]][x.to[2]] != 'Y')
                 {
                     Operate::RunFormula(x.Formula, strlen(x.Formula));
@@ -740,6 +751,9 @@ namespace BruteCross
 
     void BruteCross()
     {
+        if (Cross::IsCross())
+            return;
+
         // 分四层将棱块旋转到顶面上
         for (int j = 0; j < sizeof(Case1) / sizeof(state); j++)
         {
@@ -753,6 +767,7 @@ namespace BruteCross
                 RunState(Case4[i]);
         }
 
+        if (Cross::IsCross()) return;
         for (int i = 1; i <= 4; i++)
         {
             if (cube[1][1][2] == 'G' && cube[5][3][2] == 'Y')
@@ -762,6 +777,7 @@ namespace BruteCross
             }
             Operate::RunFormula("U", 1);
         }
+        if (Cross::IsCross()) return;
 
         for (int i = 1; i <= 4; i++)
         {
@@ -772,6 +788,7 @@ namespace BruteCross
             }
             Operate::RunFormula("U", 1);
         }
+        if (Cross::IsCross()) return;
 
         for (int i = 1; i <= 4; i++)
         {
@@ -782,6 +799,7 @@ namespace BruteCross
             }
             Operate::RunFormula("U", 1);
         }
+        if (Cross::IsCross()) return;
 
         for (int i = 1; i <= 4; i++)
         {
@@ -798,6 +816,15 @@ namespace BruteCross
 //接口函数名SecondEdge，作用：将已经还原底层的魔方还原好第二层棱块，无参数，直接作用与全局数组Cube；
 namespace SecondEdge
 {
+    bool IsFinished()
+    {
+        for(int i = 1; i <= 4; i++)
+        {
+            if(cube[i][2][1] != cube[i][2][2] || cube[i][2][3] != cube[i][2][2])
+                return 0;
+        }
+        return 1;
+    }
     void Out(int number)
     {
         char *out1 = "fufufUFUF";
@@ -868,6 +895,8 @@ namespace SecondEdge
 
     void SecondEdge()
     {
+        if (IsFinished())
+            return;
         char color1 = 'O', color2 = 'G';
         outThe(color1, color2);
         aligment(color1, color2);
@@ -1168,6 +1197,7 @@ namespace TestTopReduction
         cout << Right();
     }
 } // namespace TestTopReduction
+
 namespace bottomcorner
 {
     int amt = 0;
@@ -1326,6 +1356,8 @@ namespace bottomcorner
     //恢复底角的主函数
     void botcongw()
     {
+        if (matchcorner())
+            return;
         amt = 0;
         memset(flag, 0, sizeof flag);
         flag[0] = 1;
@@ -1472,6 +1504,7 @@ namespace TopMid
         if (IsTopMid())
         {
             MarchColor();
+            return;
         }
 
         int flag = 0;
@@ -1691,6 +1724,8 @@ namespace TestTools
 
 } // namespace TestTools
 
+// #define PrintEachStep
+
 #ifdef PrintEachStep
 int xstep = 0;
 void GetMessage()
@@ -1771,6 +1806,9 @@ void FinalTest()
     int success = 0;
     int out = 0;
     int maxStep = 0;
+    int minStep = 0x3f3f3f3f;
+    double start = 0, finish = 0;
+    start = clock();
     for (int i = 1; i <= n; i++)
     {
         OptsNum = 0;
@@ -1790,6 +1828,7 @@ void FinalTest()
         SumStep += OptsNum;
         cout << "所用步数" << OptsNum << endl;
         maxStep = max(maxStep, OptsNum);
+        minStep = min(minStep, OptsNum);
         if (OptsNum > 1000)
         {
             cout << "Too Long !!!" << endl;
@@ -1797,11 +1836,14 @@ void FinalTest()
         }
         cout << "---------------------------------------------------" << endl;
     }
+    finish = clock();
 
     cout << "成功次数" << success << '/' << n << endl;
     cout << "步数超限次数" << out << '/' << n << endl;
     cout << "最长步数" << maxStep << endl;
+    cout << "最短步数" << minStep << endl;
     cout << "平均步数" << SumStep / n << endl;
+    cout << "总计用时" << (finish - start) / CLOCKS_PER_SEC << endl;
     fclose(stdout);
 }
 
@@ -1810,9 +1852,10 @@ int main()
     // 初始化动态数组cube
     init();
     // 最终测试函数
-    //FinalTest();
+    // FinalTest();
     // 读入
     IO::Sread();
     // 还原魔方主函数
     MainFunction();
+    return 0;
 }
